@@ -1,0 +1,9 @@
+# Recorded working environment; install the CUDA-matched PyTorch wheel separately.
+numpy==2.2.6
+torch==2.11.0
+transformers==5.20.2
+peft==0.21.2
+safetensors==0.8.0
+accelerate==1.15.0
+triton==3.6.0
+pytest==9.1.1

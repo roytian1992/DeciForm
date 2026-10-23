@@ -1,0 +1,7 @@
+DeciForm
+Copyright 2026 DeciForm contributors.
+
+DeciForm-9B-v0.1 uses Qwen/Qwen3.5-9B (post-trained/instruct) as its separately downloaded backbone.
+Qwen backbone license: Apache License 2.0.
+Only project-trained adapter and decision-head weights are distributed here.
+PEFT, Transformers, PyTorch and optional FLA kernels retain their own licenses.

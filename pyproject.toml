@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deciform"
+version = "0.1.0"
+description = "Open-weight models for structured decision making"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+dependencies = ["numpy>=1.26,<3", "torch>=2.10", "transformers>=5.3,<6", "peft>=0.18,<1", "safetensors>=0.5", "accelerate>=1.0"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "scripts"]

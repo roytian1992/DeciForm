@@ -1,0 +1,5005 @@
+{
+  "status": "complete",
+  "evaluated_on": "2026-10-23",
+  "test_manifest_sha256": "83a6b01de03ca4b752d1bf9f5e4a8b337df435bee099de574bbaf50d657a4368",
+  "source_comparison_sha256": "67d83b3412cf3c86b7d38c84a2d0895ad542deedc42988f8036e2207b9ce2b80",
+  "record_count": 68156,
+  "source_counts": {
+    "banking77": 153,
+    "dbpedia14": 66012,
+    "emotion": 382,
+    "f2_priority": 45,
+    "mmlu": 255,
+    "mmlu_pro": 640,
+    "paws": 128,
+    "qnli": 128,
+    "sciq": 64,
+    "sst5": 120,
+    "trec": 104,
+    "tweet_offensive": 125
+  },
+  "models": {
+    "ours_after": {
+      "display_name": "DeciForm-9B-v0.1 (Static)",
+      "status": "complete",
+      "evaluated": 68156,
+      "expected": 68156,
+      "macro_source_accuracy": 0.8056099581927172,
+      "pooled_accuracy": 0.9827014496155878,
+      "sources": {
+        "banking77": {
+          "expected": 153,
+          "evaluated": 153,
+          "complete": true,
+          "correct": 111,
+          "accuracy": 0.7254901960784313
+        },
+        "dbpedia14": {
+          "expected": 66012,
+          "evaluated": 66012,
+          "complete": true,
+          "correct": 65501,
+          "accuracy": 0.992258983215173
+        },
+        "emotion": {
+          "expected": 382,
+          "evaluated": 382,
+          "complete": true,
+          "correct": 253,
+          "accuracy": 0.662303664921466
+        },
+        "f2_priority": {
+          "expected": 45,
+          "evaluated": 45,
+          "complete": true,
+          "correct": 44,
+          "accuracy": 0.9777777777777777
+        },
+        "mmlu": {
+          "expected": 255,
+          "evaluated": 255,
+          "complete": true,
+          "correct": 188,
+          "accuracy": 0.7372549019607844
+        },
+        "mmlu_pro": {
+          "expected": 640,
+          "evaluated": 640,
+          "complete": true,
+          "correct": 322,
+          "accuracy": 0.503125
+        },
+        "paws": {
+          "expected": 128,
+          "evaluated": 128,
+          "complete": true,
+          "correct": 121,
+          "accuracy": 0.9453125
+        },
+        "qnli": {
+          "expected": 128,
+          "evaluated": 128,
+          "complete": true,
+          "correct": 119,
+          "accuracy": 0.9296875
+        },
+        "sciq": {
+          "expected": 64,
+          "evaluated": 64,
+          "complete": true,
+          "correct": 62,
+          "accuracy": 0.96875
+        },
+        "sst5": {
+          "expected": 120,
+          "evaluated": 120,
+          "complete": true,
+          "correct": 62,
+          "accuracy": 0.5166666666666667
+        },
+        "trec": {
+          "expected": 104,
+          "evaluated": 104,
+          "complete": true,
+          "correct": 97,
+          "accuracy": 0.9326923076923077
+        },
+        "tweet_offensive": {
+          "expected": 125,
+          "evaluated": 125,
+          "complete": true,
+          "correct": 97,
+          "accuracy": 0.776
+        }
+      },
+      "metrics": {
+        "aggregate": {
+          "record_count": 68156,
+          "accuracy": 0.9827014496155878,
+          "brier": 0.02515454773568284,
+          "ece": 0.0010980691224471994,
+          "nll": 0.05712105774046249,
+          "accuracy_wilson_95": [
+            0.9816950543922391,
+            0.9836534351542394
+          ],
+          "reliability_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 0,
+              "accuracy": null,
+              "confidence": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 102,
+              "accuracy": 0.19607843137254902,
+              "confidence": 0.1550565272861836
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 109,
+              "accuracy": 0.29357798165137616,
+              "confidence": 0.24873067247211386
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 125,
+              "accuracy": 0.384,
+              "confidence": 0.35150438666343686
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 210,
+              "accuracy": 0.4380952380952381,
+              "confidence": 0.4540912513222013
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 403,
+              "accuracy": 0.5136476426799007,
+              "confidence": 0.5511365177909434
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 406,
+              "accuracy": 0.6576354679802956,
+              "confidence": 0.6484079544473751
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 447,
+              "accuracy": 0.7181208053691275,
+              "confidence": 0.7520851576888321
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 754,
+              "accuracy": 0.8342175066312998,
+              "confidence": 0.8565055430725967
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 65600,
+              "accuracy": 0.9963567073170732,
+              "confidence": 0.9964711076466413
+            }
+          ],
+          "fixed_threshold_risk": {
+            "0.5": {
+              "count": 67610,
+              "coverage": 0.9919889664886437,
+              "risk": 0.012202336932406448
+            },
+            "0.8": {
+              "count": 66354,
+              "coverage": 0.9735606549680146,
+              "risk": 0.0054857280646230825
+            },
+            "0.9": {
+              "count": 65600,
+              "coverage": 0.9624977991666177,
+              "risk": 0.0036432926829268295
+            },
+            "0.95": {
+              "count": 64638,
+              "coverage": 0.9483831210751804,
+              "risk": 0.002490794888455707
+            }
+          },
+          "macro_f1": 0.7406956278212197,
+          "macro_f1_definition": "unweighted mean of per-source macro F1",
+          "probability_metric_weighting": "one vote per test record; ECE recomputed on pooled records"
+        },
+        "source_metrics": {
+          "banking77": {
+            "record_count": 153,
+            "accuracy": 0.7254901960784313,
+            "macro_f1": 0.6988868274582558,
+            "brier": 0.4343904086899487,
+            "ece": 0.05474968381177365,
+            "nll": 1.0175876027602724,
+            "label_counts": {
+              "card_acceptance": 2,
+              "top_up_by_cash_or_cheque": 2,
+              "top_up_by_card_charge": 2,
+              "fiat_currency_support": 2,
+              "visa_or_mastercard": 2,
+              "pending_transfer": 2,
+              "automatic_top_up": 2,
+              "verify_source_of_funds": 2,
+              "beneficiary_not_allowed": 2,
+              "transfer_timing": 2,
+              "extra_charge_on_statement": 2,
+              "transfer_fee_charged": 2,
+              "card_linking": 2,
+              "passcode_forgotten": 2,
+              "reverted_card_payment?": 2,
+              "unable_to_verify_identity": 2,
+              "exchange_rate": 2,
+              "lost_or_stolen_card": 2,
+              "verify_top_up": 2,
+              "transfer_not_received_by_recipient": 2,
+              "transaction_charged_twice": 2,
+              "card_not_working": 2,
+              "top_up_by_bank_transfer_charge": 2,
+              "wrong_exchange_rate_for_cash_withdrawal": 2,
+              "cash_withdrawal_charge": 2,
+              "get_disposable_virtual_card": 2,
+              "top_up_limits": 2,
+              "receiving_money": 2,
+              "topping_up_by_card": 2,
+              "card_payment_fee_charged": 2,
+              "verify_my_identity": 2,
+              "edit_personal_details": 2,
+              "exchange_charge": 2,
+              "card_payment_not_recognised": 2,
+              "pending_top_up": 2,
+              "pin_blocked": 2,
+              "request_refund": 2,
+              "getting_spare_card": 2,
+              "lost_or_stolen_phone": 2,
+              "balance_not_updated_after_cheque_or_cash_deposit": 2,
+              "transfer_into_account": 2,
+              "card_delivery_estimate": 2,
+              "top_up_reverted": 2,
+              "declined_cash_withdrawal": 2,
+              "failed_transfer": 2,
+              "apple_pay_or_google_pay": 2,
+              "balance_not_updated_after_bank_transfer": 2,
+              "card_payment_wrong_exchange_rate": 2,
+              "cash_withdrawal_not_recognised": 2,
+              "card_arrival": 2,
+              "card_swallowed": 2,
+              "compromised_card": 2,
+              "declined_card_payment": 2,
+              "activate_my_card": 2,
+              "Refund_not_showing_up": 2,
+              "country_support": 2,
+              "wrong_amount_of_cash_received": 2,
+              "pending_cash_withdrawal": 2,
+              "why_verify_identity": 2,
+              "cancel_transfer": 2,
+              "terminate_account": 2,
+              "atm_support": 2,
+              "top_up_failed": 2,
+              "virtual_card_not_working": 2,
+              "disposable_card_limits": 2,
+              "direct_debit_payment_not_recognised": 2,
+              "order_physical_card": 2,
+              "card_about_to_expire": 2,
+              "change_pin": 2,
+              "supported_cards_and_currencies": 2,
+              "exchange_via_app": 2,
+              "age_limit": 2,
+              "get_physical_card": 2,
+              "pending_card_payment": 2,
+              "contactless_not_working": 1,
+              "declined_transfer": 2,
+              "getting_virtual_card": 2
+            },
+            "accuracy_wilson_95": [
+              0.6499080175752308,
+              0.7900266815713952
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 4,
+                "accuracy": 0.75,
+                "confidence": 0.2729508727788925
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 11,
+                "accuracy": 0.45454545454545453,
+                "confidence": 0.362687731331045
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 13,
+                "accuracy": 0.6153846153846154,
+                "confidence": 0.4524734891377963
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 20,
+                "accuracy": 0.5,
+                "confidence": 0.5564126789569854
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 26,
+                "accuracy": 0.6923076923076923,
+                "confidence": 0.6482749443787795
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 26,
+                "accuracy": 0.7692307692307693,
+                "confidence": 0.7469087793276861
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 31,
+                "accuracy": 0.8387096774193549,
+                "confidence": 0.8535798922661813
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 22,
+                "accuracy": 0.9545454545454546,
+                "confidence": 0.9533739956942472
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 125,
+                "coverage": 0.8169934640522876,
+                "risk": 0.24
+              },
+              "0.8": {
+                "count": 53,
+                "coverage": 0.3464052287581699,
+                "risk": 0.11320754716981132
+              },
+              "0.9": {
+                "count": 22,
+                "coverage": 0.1437908496732026,
+                "risk": 0.045454545454545456
+              },
+              "0.95": {
+                "count": 10,
+                "coverage": 0.06535947712418301,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "dbpedia14": {
+            "record_count": 66012,
+            "accuracy": 0.992258983215173,
+            "macro_f1": 0.9922657074581086,
+            "brier": 0.012424227566385075,
+            "ece": 0.0006850444952885396,
+            "nll": 0.029573771085390374,
+            "label_counts": {
+              "Company": 4719,
+              "EducationalInstitution": 4721,
+              "Artist": 4724,
+              "Athlete": 4713,
+              "OfficeHolder": 4715,
+              "MeanOfTransportation": 4718,
+              "Building": 4712,
+              "NaturalPlace": 4706,
+              "Village": 4721,
+              "Animal": 4714,
+              "Plant": 4696,
+              "Album": 4722,
+              "Film": 4703,
+              "WrittenWork": 4728
+            },
+            "accuracy_wilson_95": [
+              0.9915611727974062,
+              0.9928995045771208
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 8,
+                "accuracy": 0.125,
+                "confidence": 0.3478742502629757
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 51,
+                "accuracy": 0.47058823529411764,
+                "confidence": 0.4691213159000172
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 185,
+                "accuracy": 0.5243243243243243,
+                "confidence": 0.5517019713247144
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 188,
+                "accuracy": 0.6914893617021277,
+                "confidence": 0.6475449692695698
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 250,
+                "accuracy": 0.736,
+                "confidence": 0.7543364932537079
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 517,
+                "accuracy": 0.8529980657640233,
+                "confidence": 0.8576995105531275
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 64813,
+                "accuracy": 0.9970839183497138,
+                "confidence": 0.9967287092158981
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 65953,
+                "coverage": 0.9991062231109495,
+                "risk": 0.00723242308916956
+              },
+              "0.8": {
+                "count": 65330,
+                "coverage": 0.9896685451130097,
+                "risk": 0.004056329404561457
+              },
+              "0.9": {
+                "count": 64813,
+                "coverage": 0.9818366357631946,
+                "risk": 0.002916081650286208
+              },
+              "0.95": {
+                "count": 64010,
+                "coverage": 0.9696721808156092,
+                "risk": 0.002062177784721137
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "emotion": {
+            "record_count": 382,
+            "accuracy": 0.662303664921466,
+            "macro_f1": 0.6583682927555558,
+            "brier": 0.4860352871385402,
+            "ece": 0.10573100107502563,
+            "nll": 0.9709141585574588,
+            "label_counts": {
+              "fear": 64,
+              "sadness": 64,
+              "love": 64,
+              "anger": 63,
+              "surprise": 63,
+              "joy": 64
+            },
+            "accuracy_wilson_95": [
+              0.6134716856666156,
+              0.7079038357172192
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 1,
+                "accuracy": 0.0,
+                "confidence": 0.2975073754787445
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 8,
+                "accuracy": 0.375,
+                "confidence": 0.3512154370546341
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 46,
+                "accuracy": 0.5,
+                "confidence": 0.4574872456167055
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 38,
+                "accuracy": 0.39473684210526316,
+                "confidence": 0.5468110128452903
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 43,
+                "accuracy": 0.6046511627906976,
+                "confidence": 0.6438015325124874
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 59,
+                "accuracy": 0.7288135593220338,
+                "confidence": 0.7459302281929274
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 63,
+                "accuracy": 0.6825396825396826,
+                "confidence": 0.8476078283219111
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 124,
+                "accuracy": 0.8064516129032258,
+                "confidence": 0.9602775064206892
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 327,
+                "coverage": 0.856020942408377,
+                "risk": 0.3058103975535168
+              },
+              "0.8": {
+                "count": 187,
+                "coverage": 0.4895287958115183,
+                "risk": 0.23529411764705882
+              },
+              "0.9": {
+                "count": 124,
+                "coverage": 0.32460732984293195,
+                "risk": 0.1935483870967742
+              },
+              "0.95": {
+                "count": 79,
+                "coverage": 0.20680628272251309,
+                "risk": 0.20253164556962025
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "f2_priority": {
+            "record_count": 45,
+            "accuracy": 0.9777777777777777,
+            "macro_f1": 0.9777530589543938,
+            "brier": 0.05149960909480292,
+            "ece": 0.058937553564707416,
+            "nll": 0.1010334547672454,
+            "label_counts": {
+              "high": 15,
+              "medium": 15,
+              "low": 15
+            },
+            "accuracy_wilson_95": [
+              0.8843331823158513,
+              0.9960664011171667
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 3,
+                "accuracy": 0.6666666666666666,
+                "confidence": 0.5344235499699911
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 1,
+                "accuracy": 1.0,
+                "confidence": 0.6484556794166565
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 3,
+                "accuracy": 1.0,
+                "confidence": 0.7125616669654846
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 3,
+                "accuracy": 1.0,
+                "confidence": 0.8676956097284952
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 35,
+                "accuracy": 1.0,
+                "confidence": 0.9815803408622742
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 45,
+                "coverage": 1.0,
+                "risk": 0.022222222222222223
+              },
+              "0.8": {
+                "count": 38,
+                "coverage": 0.8444444444444444,
+                "risk": 0.0
+              },
+              "0.9": {
+                "count": 35,
+                "coverage": 0.7777777777777778,
+                "risk": 0.0
+              },
+              "0.95": {
+                "count": 33,
+                "coverage": 0.7333333333333333,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "mmlu": {
+            "record_count": 255,
+            "accuracy": 0.7372549019607844,
+            "macro_f1": 0.7372266594292805,
+            "brier": 0.3750205560062659,
+            "ece": 0.08905579915233684,
+            "nll": 0.7684802322885991,
+            "label_counts": {
+              "B": 64,
+              "D": 64,
+              "A": 63,
+              "C": 64
+            },
+            "accuracy_wilson_95": [
+              0.6800007236339579,
+              0.7874668936144046
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 6,
+                "accuracy": 0.3333333333333333,
+                "confidence": 0.3645785450935364
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 23,
+                "accuracy": 0.391304347826087,
+                "confidence": 0.439619031937226
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 30,
+                "accuracy": 0.4666666666666667,
+                "confidence": 0.5507392525672913
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 32,
+                "accuracy": 0.78125,
+                "confidence": 0.6595118250697851
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 16,
+                "accuracy": 0.5625,
+                "confidence": 0.7592037320137024
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 28,
+                "accuracy": 0.6428571428571429,
+                "confidence": 0.85630102455616
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 120,
+                "accuracy": 0.925,
+                "confidence": 0.9739086017012596
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 226,
+                "coverage": 0.8862745098039215,
+                "risk": 0.2168141592920354
+              },
+              "0.8": {
+                "count": 148,
+                "coverage": 0.5803921568627451,
+                "risk": 0.12837837837837837
+              },
+              "0.9": {
+                "count": 120,
+                "coverage": 0.47058823529411764,
+                "risk": 0.075
+              },
+              "0.95": {
+                "count": 94,
+                "coverage": 0.3686274509803922,
+                "risk": 0.06382978723404255
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "mmlu_pro": {
+            "record_count": 640,
+            "accuracy": 0.503125,
+            "macro_f1": 0.5024946864782203,
+            "brier": 0.6248779105305379,
+            "ece": 0.0366328727453947,
+            "nll": 1.509230786917131,
+            "label_counts": {
+              "E": 64,
+              "I": 64,
+              "B": 64,
+              "D": 64,
+              "A": 64,
+              "C": 64,
+              "G": 64,
+              "H": 64,
+              "J": 64,
+              "F": 64
+            },
+            "accuracy_wilson_95": [
+              0.4644856500755464,
+              0.5417270595056707
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 102,
+                "accuracy": 0.19607843137254902,
+                "confidence": 0.1550565272861836
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 104,
+                "accuracy": 0.27884615384615385,
+                "confidence": 0.24733011954678938
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 87,
+                "accuracy": 0.3793103448275862,
+                "confidence": 0.34821973860948935
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 56,
+                "accuracy": 0.4107142857142857,
+                "confidence": 0.4413340858050755
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 57,
+                "accuracy": 0.5614035087719298,
+                "confidence": 0.5501556595166525
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 48,
+                "accuracy": 0.625,
+                "confidence": 0.6497001188496748
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 48,
+                "accuracy": 0.6666666666666666,
+                "confidence": 0.7530478139718374
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 50,
+                "accuracy": 0.86,
+                "confidence": 0.8526167559623719
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 88,
+                "accuracy": 0.9090909090909091,
+                "confidence": 0.9684244868430224
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 291,
+                "coverage": 0.4546875,
+                "risk": 0.2542955326460481
+              },
+              "0.8": {
+                "count": 138,
+                "coverage": 0.215625,
+                "risk": 0.10869565217391304
+              },
+              "0.9": {
+                "count": 88,
+                "coverage": 0.1375,
+                "risk": 0.09090909090909091
+              },
+              "0.95": {
+                "count": 63,
+                "coverage": 0.0984375,
+                "risk": 0.031746031746031744
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "paws": {
+            "record_count": 128,
+            "accuracy": 0.9453125,
+            "macro_f1": 0.9453091619361533,
+            "brier": 0.07425977732371652,
+            "ece": 0.015322281979024412,
+            "nll": 0.12762540019482688,
+            "label_counts": {
+              "1": 64,
+              "0": 64
+            },
+            "accuracy_wilson_95": [
+              0.8914150997002529,
+              0.9732597986186536
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 4,
+                "accuracy": 0.5,
+                "confidence": 0.5488541424274445
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 4,
+                "accuracy": 0.5,
+                "confidence": 0.6832537800073624
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 5,
+                "accuracy": 0.8,
+                "confidence": 0.7641453623771668
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 9,
+                "accuracy": 0.8888888888888888,
+                "confidence": 0.8485055168469747
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 106,
+                "accuracy": 0.9905660377358491,
+                "confidence": 0.9859424823859952
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 128,
+                "coverage": 1.0,
+                "risk": 0.0546875
+              },
+              "0.8": {
+                "count": 115,
+                "coverage": 0.8984375,
+                "risk": 0.017391304347826087
+              },
+              "0.9": {
+                "count": 106,
+                "coverage": 0.828125,
+                "risk": 0.009433962264150943
+              },
+              "0.95": {
+                "count": 98,
+                "coverage": 0.765625,
+                "risk": 0.01020408163265306
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "qnli": {
+            "record_count": 128,
+            "accuracy": 0.9296875,
+            "macro_f1": 0.929648854961832,
+            "brier": 0.08870716583088897,
+            "ece": 0.03798519121482961,
+            "nll": 0.165092315917606,
+            "label_counts": {
+              "entailment": 64,
+              "not_entailment": 64
+            },
+            "accuracy_wilson_95": [
+              0.8717651965063937,
+              0.96257023169606
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 3,
+                "accuracy": 0.0,
+                "confidence": 0.5512488683064779
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 4,
+                "accuracy": 0.5,
+                "confidence": 0.6389422118663788
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 4,
+                "accuracy": 0.75,
+                "confidence": 0.7395191490650177
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 8,
+                "accuracy": 1.0,
+                "confidence": 0.8571574315428734
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 109,
+                "accuracy": 0.9724770642201835,
+                "confidence": 0.9859442667129936
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 128,
+                "coverage": 1.0,
+                "risk": 0.0703125
+              },
+              "0.8": {
+                "count": 117,
+                "coverage": 0.9140625,
+                "risk": 0.02564102564102564
+              },
+              "0.9": {
+                "count": 109,
+                "coverage": 0.8515625,
+                "risk": 0.027522935779816515
+              },
+              "0.95": {
+                "count": 98,
+                "coverage": 0.765625,
+                "risk": 0.01020408163265306
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "sciq": {
+            "record_count": 64,
+            "accuracy": 0.96875,
+            "macro_f1": 0.24603174603174602,
+            "brier": 0.04516739953539068,
+            "ece": 0.02331118658185014,
+            "nll": 0.15046649638102375,
+            "label_counts": {
+              "A": 64
+            },
+            "accuracy_wilson_95": [
+              0.8930270822904169,
+              0.9913878616538281
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 1,
+                "accuracy": 0.0,
+                "confidence": 0.6036509871482849
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 63,
+                "accuracy": 0.9841269841269841,
+                "confidence": 0.9982264278427003
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 64,
+                "coverage": 1.0,
+                "risk": 0.03125
+              },
+              "0.8": {
+                "count": 63,
+                "coverage": 0.984375,
+                "risk": 0.015873015873015872
+              },
+              "0.9": {
+                "count": 63,
+                "coverage": 0.984375,
+                "risk": 0.015873015873015872
+              },
+              "0.95": {
+                "count": 62,
+                "coverage": 0.96875,
+                "risk": 0.016129032258064516
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "sst5": {
+            "record_count": 120,
+            "accuracy": 0.5166666666666667,
+            "macro_f1": 0.4903473278378601,
+            "brier": 0.6058656520799192,
+            "ece": 0.11426971976955728,
+            "nll": 1.0183276728990072,
+            "label_counts": {
+              "very positive": 24,
+              "positive": 24,
+              "negative": 24,
+              "very negative": 24,
+              "neutral": 24
+            },
+            "accuracy_wilson_95": [
+              0.4281358041299209,
+              0.6041635569894558
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 5,
+                "accuracy": 0.8,
+                "confidence": 0.37463545203208926
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 19,
+                "accuracy": 0.2631578947368421,
+                "confidence": 0.4621742148148386
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 45,
+                "accuracy": 0.5777777777777777,
+                "confidence": 0.5535600013203091
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 40,
+                "accuracy": 0.525,
+                "confidence": 0.6425085544586182
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 11,
+                "accuracy": 0.5454545454545454,
+                "confidence": 0.7285537665540521
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 96,
+                "coverage": 0.8,
+                "risk": 0.4479166666666667
+              },
+              "0.8": {
+                "count": 0,
+                "coverage": 0.0,
+                "risk": null
+              },
+              "0.9": {
+                "count": 0,
+                "coverage": 0.0,
+                "risk": null
+              },
+              "0.95": {
+                "count": 0,
+                "coverage": 0.0,
+                "risk": null
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "trec": {
+            "record_count": 104,
+            "accuracy": 0.9326923076923077,
+            "macro_f1": 0.9418647071086096,
+            "brier": 0.09209010865505718,
+            "ece": 0.04201024340895506,
+            "nll": 0.20110865161043,
+            "label_counts": {
+              "HUM": 20,
+              "NUM": 20,
+              "ENTY": 20,
+              "ABBR": 4,
+              "DESC": 20,
+              "LOC": 20
+            },
+            "accuracy_wilson_95": [
+              0.8675421323612021,
+              0.9670163109703299
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 2,
+                "accuracy": 0.0,
+                "confidence": 0.4500751942396164
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 4,
+                "accuracy": 0.5,
+                "confidence": 0.5554572492837906
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 4,
+                "accuracy": 0.75,
+                "confidence": 0.651148647069931
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 3,
+                "accuracy": 1.0,
+                "confidence": 0.7620108127593994
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 14,
+                "accuracy": 0.9285714285714286,
+                "confidence": 0.8630625903606415
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 77,
+                "accuracy": 0.987012987012987,
+                "confidence": 0.9711611789542359
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 102,
+                "coverage": 0.9807692307692307,
+                "risk": 0.049019607843137254
+              },
+              "0.8": {
+                "count": 91,
+                "coverage": 0.875,
+                "risk": 0.02197802197802198
+              },
+              "0.9": {
+                "count": 77,
+                "coverage": 0.7403846153846154,
+                "risk": 0.012987012987012988
+              },
+              "0.95": {
+                "count": 60,
+                "coverage": 0.5769230769230769,
+                "risk": 0.016666666666666666
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "tweet_offensive": {
+            "record_count": 125,
+            "accuracy": 0.776,
+            "macro_f1": 0.7681505034446211,
+            "brier": 0.30605371496240696,
+            "ece": 0.04227034521102908,
+            "nll": 0.46167928326195373,
+            "label_counts": {
+              "non-offensive": 62,
+              "offensive": 63
+            },
+            "accuracy_wilson_95": [
+              0.6953116645758503,
+              0.8402302380971537
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 14,
+                "accuracy": 0.5,
+                "confidence": 0.5478976326329368
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 15,
+                "accuracy": 0.6,
+                "confidence": 0.6560499548912049
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 22,
+                "accuracy": 0.6363636363636364,
+                "confidence": 0.7571937902407213
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 31,
+                "accuracy": 0.8387096774193549,
+                "confidence": 0.8621685158821845
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 43,
+                "accuracy": 0.9534883720930233,
+                "confidence": 0.9624881300815317
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 125,
+                "coverage": 1.0,
+                "risk": 0.224
+              },
+              "0.8": {
+                "count": 74,
+                "coverage": 0.592,
+                "risk": 0.0945945945945946
+              },
+              "0.9": {
+                "count": 43,
+                "coverage": 0.344,
+                "risk": 0.046511627906976744
+              },
+              "0.95": {
+                "count": 31,
+                "coverage": 0.248,
+                "risk": 0.03225806451612903
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          }
+        },
+        "record_count": 68156,
+        "unique_source_family_count": 12
+      }
+    },
+    "kev": {
+      "display_name": "Kev-9B",
+      "status": "complete",
+      "evaluated": 68156,
+      "expected": 68156,
+      "macro_source_accuracy": 0.7891590079325678,
+      "pooled_accuracy": 0.9803392217853161,
+      "sources": {
+        "banking77": {
+          "expected": 153,
+          "evaluated": 153,
+          "complete": true,
+          "correct": 134,
+          "accuracy": 0.8758169934640523
+        },
+        "dbpedia14": {
+          "expected": 66012,
+          "evaluated": 66012,
+          "complete": true,
+          "correct": 65374,
+          "accuracy": 0.9903350905895898
+        },
+        "emotion": {
+          "expected": 382,
+          "evaluated": 382,
+          "complete": true,
+          "correct": 188,
+          "accuracy": 0.49214659685863876
+        },
+        "f2_priority": {
+          "expected": 45,
+          "evaluated": 45,
+          "complete": true,
+          "correct": 38,
+          "accuracy": 0.8444444444444444
+        },
+        "mmlu": {
+          "expected": 255,
+          "evaluated": 255,
+          "complete": true,
+          "correct": 203,
+          "accuracy": 0.796078431372549
+        },
+        "mmlu_pro": {
+          "expected": 640,
+          "evaluated": 640,
+          "complete": true,
+          "correct": 337,
+          "accuracy": 0.5265625
+        },
+        "paws": {
+          "expected": 128,
+          "evaluated": 128,
+          "complete": true,
+          "correct": 104,
+          "accuracy": 0.8125
+        },
+        "qnli": {
+          "expected": 128,
+          "evaluated": 128,
+          "complete": true,
+          "correct": 113,
+          "accuracy": 0.8828125
+        },
+        "sciq": {
+          "expected": 64,
+          "evaluated": 64,
+          "complete": true,
+          "correct": 62,
+          "accuracy": 0.96875
+        },
+        "sst5": {
+          "expected": 120,
+          "evaluated": 120,
+          "complete": true,
+          "correct": 69,
+          "accuracy": 0.575
+        },
+        "trec": {
+          "expected": 104,
+          "evaluated": 104,
+          "complete": true,
+          "correct": 95,
+          "accuracy": 0.9134615384615384
+        },
+        "tweet_offensive": {
+          "expected": 125,
+          "evaluated": 125,
+          "complete": true,
+          "correct": 99,
+          "accuracy": 0.792
+        }
+      },
+      "metrics": {
+        "aggregate": {
+          "record_count": 68156,
+          "accuracy": 0.9803392217853161,
+          "brier": 0.029726679824944237,
+          "ece": 0.00930790538390781,
+          "nll": 0.0750712401262001,
+          "accuracy_wilson_95": [
+            0.9792695474900686,
+            0.9813547526641189
+          ],
+          "reliability_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 1,
+              "accuracy": 0.0,
+              "confidence": 0.08598645776510239
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 51,
+              "accuracy": 0.1568627450980392,
+              "confidence": 0.17691552142302194
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 205,
+              "accuracy": 0.2975609756097561,
+              "confidence": 0.2539802232166616
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 227,
+              "accuracy": 0.4801762114537445,
+              "confidence": 0.35442509315087406
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 288,
+              "accuracy": 0.5138888888888888,
+              "confidence": 0.45312208216637373
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 402,
+              "accuracy": 0.5572139303482587,
+              "confidence": 0.547569020174036
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 501,
+              "accuracy": 0.6726546906187625,
+              "confidence": 0.6501524529295292
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 567,
+              "accuracy": 0.7619047619047619,
+              "confidence": 0.7511096284503028
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 934,
+              "accuracy": 0.8404710920770878,
+              "confidence": 0.8577109277886548
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 64980,
+              "accuracy": 0.9958756540473992,
+              "confidence": 0.9875511418795285
+            }
+          ],
+          "fixed_threshold_risk": {
+            "0.5": {
+              "count": 67384,
+              "coverage": 0.9886730441927343,
+              "risk": 0.013267244449721003
+            },
+            "0.8": {
+              "count": 65914,
+              "coverage": 0.9671048770467751,
+              "risk": 0.00632642534211245
+            },
+            "0.9": {
+              "count": 64980,
+              "coverage": 0.9534010211866893,
+              "risk": 0.0041243459526008
+            },
+            "0.95": {
+              "count": 63543,
+              "coverage": 0.9323170373848231,
+              "risk": 0.0026596163228050297
+            }
+          },
+          "macro_f1": 0.7279790612487789,
+          "macro_f1_definition": "unweighted mean of per-source macro F1",
+          "probability_metric_weighting": "one vote per test record; ECE recomputed on pooled records"
+        },
+        "source_metrics": {
+          "banking77": {
+            "record_count": 153,
+            "accuracy": 0.8758169934640523,
+            "macro_f1": 0.8619666048237472,
+            "brier": 0.2124647573356282,
+            "ece": 0.06387040481653092,
+            "nll": 0.5614512429008244,
+            "label_counts": {
+              "card_acceptance": 2,
+              "top_up_by_cash_or_cheque": 2,
+              "top_up_by_card_charge": 2,
+              "fiat_currency_support": 2,
+              "visa_or_mastercard": 2,
+              "pending_transfer": 2,
+              "automatic_top_up": 2,
+              "verify_source_of_funds": 2,
+              "beneficiary_not_allowed": 2,
+              "transfer_timing": 2,
+              "extra_charge_on_statement": 2,
+              "transfer_fee_charged": 2,
+              "card_linking": 2,
+              "passcode_forgotten": 2,
+              "reverted_card_payment?": 2,
+              "unable_to_verify_identity": 2,
+              "exchange_rate": 2,
+              "lost_or_stolen_card": 2,
+              "verify_top_up": 2,
+              "transfer_not_received_by_recipient": 2,
+              "transaction_charged_twice": 2,
+              "card_not_working": 2,
+              "top_up_by_bank_transfer_charge": 2,
+              "wrong_exchange_rate_for_cash_withdrawal": 2,
+              "cash_withdrawal_charge": 2,
+              "get_disposable_virtual_card": 2,
+              "top_up_limits": 2,
+              "receiving_money": 2,
+              "topping_up_by_card": 2,
+              "card_payment_fee_charged": 2,
+              "verify_my_identity": 2,
+              "edit_personal_details": 2,
+              "exchange_charge": 2,
+              "card_payment_not_recognised": 2,
+              "pending_top_up": 2,
+              "pin_blocked": 2,
+              "request_refund": 2,
+              "getting_spare_card": 2,
+              "lost_or_stolen_phone": 2,
+              "balance_not_updated_after_cheque_or_cash_deposit": 2,
+              "transfer_into_account": 2,
+              "card_delivery_estimate": 2,
+              "top_up_reverted": 2,
+              "declined_cash_withdrawal": 2,
+              "failed_transfer": 2,
+              "apple_pay_or_google_pay": 2,
+              "balance_not_updated_after_bank_transfer": 2,
+              "card_payment_wrong_exchange_rate": 2,
+              "cash_withdrawal_not_recognised": 2,
+              "card_arrival": 2,
+              "card_swallowed": 2,
+              "compromised_card": 2,
+              "declined_card_payment": 2,
+              "activate_my_card": 2,
+              "Refund_not_showing_up": 2,
+              "country_support": 2,
+              "wrong_amount_of_cash_received": 2,
+              "pending_cash_withdrawal": 2,
+              "why_verify_identity": 2,
+              "cancel_transfer": 2,
+              "terminate_account": 2,
+              "atm_support": 2,
+              "top_up_failed": 2,
+              "virtual_card_not_working": 2,
+              "disposable_card_limits": 2,
+              "direct_debit_payment_not_recognised": 2,
+              "order_physical_card": 2,
+              "card_about_to_expire": 2,
+              "change_pin": 2,
+              "supported_cards_and_currencies": 2,
+              "exchange_via_app": 2,
+              "age_limit": 2,
+              "get_physical_card": 2,
+              "pending_card_payment": 2,
+              "contactless_not_working": 1,
+              "declined_transfer": 2,
+              "getting_virtual_card": 2
+            },
+            "accuracy_wilson_95": [
+              0.8141853102054881,
+              0.919039188372222
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 1,
+                "accuracy": 0.0,
+                "confidence": 0.08598645776510239
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 3,
+                "accuracy": 0.3333333333333333,
+                "confidence": 0.3505576451619466
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 5,
+                "accuracy": 1.0,
+                "confidence": 0.4413162112236023
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 9,
+                "accuracy": 0.4444444444444444,
+                "confidence": 0.5449147952927483
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 11,
+                "accuracy": 0.9090909090909091,
+                "confidence": 0.6680991161953319
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 12,
+                "accuracy": 0.8333333333333334,
+                "confidence": 0.745950922369957
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 17,
+                "accuracy": 0.7647058823529411,
+                "confidence": 0.8511854199802175
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 95,
+                "accuracy": 0.9578947368421052,
+                "confidence": 0.9659706278851158
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 144,
+                "coverage": 0.9411764705882353,
+                "risk": 0.1111111111111111
+              },
+              "0.8": {
+                "count": 112,
+                "coverage": 0.7320261437908496,
+                "risk": 0.07142857142857142
+              },
+              "0.9": {
+                "count": 95,
+                "coverage": 0.6209150326797386,
+                "risk": 0.042105263157894736
+              },
+              "0.95": {
+                "count": 71,
+                "coverage": 0.46405228758169936,
+                "risk": 0.028169014084507043
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "dbpedia14": {
+            "record_count": 66012,
+            "accuracy": 0.9903350905895898,
+            "macro_f1": 0.9903316645583012,
+            "brier": 0.016164625028540918,
+            "ece": 0.00954731384695518,
+            "nll": 0.04695005523482546,
+            "label_counts": {
+              "Company": 4719,
+              "EducationalInstitution": 4721,
+              "Artist": 4724,
+              "Athlete": 4713,
+              "OfficeHolder": 4715,
+              "MeanOfTransportation": 4718,
+              "Building": 4712,
+              "NaturalPlace": 4706,
+              "Village": 4721,
+              "Animal": 4714,
+              "Plant": 4696,
+              "Album": 4722,
+              "Film": 4703,
+              "WrittenWork": 4728
+            },
+            "accuracy_wilson_95": [
+              0.9895597118460251,
+              0.9910534041797847
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 4,
+                "accuracy": 0.0,
+                "confidence": 0.1746864840388298
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 24,
+                "accuracy": 0.20833333333333334,
+                "confidence": 0.26301202985147637
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 58,
+                "accuracy": 0.5862068965517241,
+                "confidence": 0.36085421206622287
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 107,
+                "accuracy": 0.6074766355140186,
+                "confidence": 0.45750678449033577
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 213,
+                "accuracy": 0.6150234741784038,
+                "confidence": 0.5506258201151387
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 257,
+                "accuracy": 0.7237354085603113,
+                "confidence": 0.6495436068174903
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 363,
+                "accuracy": 0.7823691460055097,
+                "confidence": 0.7513085469069888
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 659,
+                "accuracy": 0.874051593323217,
+                "confidence": 0.860262780884148
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 64327,
+                "accuracy": 0.9963623361885366,
+                "confidence": 0.9878750260540763
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 65819,
+                "coverage": 0.9970762891595467,
+                "risk": 0.008341056533827619
+              },
+              "0.8": {
+                "count": 64986,
+                "coverage": 0.9844573713870205,
+                "risk": 0.004877973717416059
+              },
+              "0.9": {
+                "count": 64327,
+                "coverage": 0.9744743379991516,
+                "risk": 0.0036376638114633047
+              },
+              "0.95": {
+                "count": 63157,
+                "coverage": 0.9567502878264558,
+                "risk": 0.002549202780372722
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "emotion": {
+            "record_count": 382,
+            "accuracy": 0.49214659685863876,
+            "macro_f1": 0.48758695650027306,
+            "brier": 0.6790961147479017,
+            "ece": 0.11415047381872906,
+            "nll": 1.3896892404823835,
+            "label_counts": {
+              "fear": 64,
+              "sadness": 64,
+              "love": 64,
+              "anger": 63,
+              "surprise": 63,
+              "joy": 64
+            },
+            "accuracy_wilson_95": [
+              0.4423408621364477,
+              0.5421087094094958
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 32,
+                "accuracy": 0.375,
+                "confidence": 0.2662218352779746
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 63,
+                "accuracy": 0.31746031746031744,
+                "confidence": 0.3518859502815065
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 59,
+                "accuracy": 0.4067796610169492,
+                "confidence": 0.4485284074888391
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 44,
+                "accuracy": 0.4318181818181818,
+                "confidence": 0.5539462092247877
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 52,
+                "accuracy": 0.5192307692307693,
+                "confidence": 0.655623543720979
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 47,
+                "accuracy": 0.6170212765957447,
+                "confidence": 0.7551779189008347
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 64,
+                "accuracy": 0.609375,
+                "confidence": 0.8424404067918658
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 21,
+                "accuracy": 0.8571428571428571,
+                "confidence": 0.9341420531272888
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 228,
+                "coverage": 0.5968586387434555,
+                "risk": 0.42105263157894735
+              },
+              "0.8": {
+                "count": 85,
+                "coverage": 0.22251308900523561,
+                "risk": 0.32941176470588235
+              },
+              "0.9": {
+                "count": 21,
+                "coverage": 0.0549738219895288,
+                "risk": 0.14285714285714285
+              },
+              "0.95": {
+                "count": 6,
+                "coverage": 0.015706806282722512,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "f2_priority": {
+            "record_count": 45,
+            "accuracy": 0.8444444444444444,
+            "macro_f1": 0.8486178486178485,
+            "brier": 0.2664255939059394,
+            "ece": 0.1141263339254591,
+            "nll": 0.4927767447736154,
+            "label_counts": {
+              "high": 15,
+              "medium": 15,
+              "low": 15
+            },
+            "accuracy_wilson_95": [
+              0.7121609112760374,
+              0.9225457651524174
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 1,
+                "accuracy": 1.0,
+                "confidence": 0.605741024017334
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 1,
+                "accuracy": 0.0,
+                "confidence": 0.7457758188247681
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 6,
+                "accuracy": 0.5,
+                "confidence": 0.8420958320299784
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 37,
+                "accuracy": 0.918918918918919,
+                "confidence": 0.9714344659367123
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 45,
+                "coverage": 1.0,
+                "risk": 0.15555555555555556
+              },
+              "0.8": {
+                "count": 43,
+                "coverage": 0.9555555555555556,
+                "risk": 0.13953488372093023
+              },
+              "0.9": {
+                "count": 37,
+                "coverage": 0.8222222222222222,
+                "risk": 0.08108108108108109
+              },
+              "0.95": {
+                "count": 29,
+                "coverage": 0.6444444444444445,
+                "risk": 0.034482758620689655
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "mmlu": {
+            "record_count": 255,
+            "accuracy": 0.796078431372549,
+            "macro_f1": 0.7938741680906247,
+            "brier": 0.33783800950198506,
+            "ece": 0.087608050365074,
+            "nll": 0.6569796532235836,
+            "label_counts": {
+              "B": 64,
+              "D": 64,
+              "A": 63,
+              "C": 64
+            },
+            "accuracy_wilson_95": [
+              0.7424039658346994,
+              0.8409647135413562
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 1,
+                "accuracy": 1.0,
+                "confidence": 0.29906803369522095
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 16,
+                "accuracy": 0.75,
+                "confidence": 0.3481540661305189
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 29,
+                "accuracy": 0.6206896551724138,
+                "confidence": 0.44880396230467434
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 26,
+                "accuracy": 0.6153846153846154,
+                "confidence": 0.5487345388302436
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 29,
+                "accuracy": 0.6896551724137931,
+                "confidence": 0.6559578344739717
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 21,
+                "accuracy": 0.8571428571428571,
+                "confidence": 0.7522426559811547
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 37,
+                "accuracy": 0.7567567567567568,
+                "confidence": 0.8587975292592436
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 96,
+                "accuracy": 0.9375,
+                "confidence": 0.9535037837922573
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 209,
+                "coverage": 0.8196078431372549,
+                "risk": 0.17703349282296652
+              },
+              "0.8": {
+                "count": 133,
+                "coverage": 0.5215686274509804,
+                "risk": 0.11278195488721804
+              },
+              "0.9": {
+                "count": 96,
+                "coverage": 0.3764705882352941,
+                "risk": 0.0625
+              },
+              "0.95": {
+                "count": 52,
+                "coverage": 0.20392156862745098,
+                "risk": 0.038461538461538464
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "mmlu_pro": {
+            "record_count": 640,
+            "accuracy": 0.5265625,
+            "macro_f1": 0.5260883033563308,
+            "brier": 0.6103876668252848,
+            "ece": 0.052620797348208716,
+            "nll": 1.4140395242345047,
+            "label_counts": {
+              "E": 64,
+              "I": 64,
+              "B": 64,
+              "D": 64,
+              "A": 64,
+              "C": 64,
+              "G": 64,
+              "H": 64,
+              "J": 64,
+              "F": 64
+            },
+            "accuracy_wilson_95": [
+              0.48783677405178766,
+              0.5649712573885562
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 47,
+                "accuracy": 0.1702127659574468,
+                "confidence": 0.1771052267323149
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 148,
+                "accuracy": 0.2905405405405405,
+                "confidence": 0.2495641235161472
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 86,
+                "accuracy": 0.47674418604651164,
+                "confidence": 0.3530436778484389
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 79,
+                "accuracy": 0.4177215189873418,
+                "confidence": 0.4511276513715334
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 42,
+                "accuracy": 0.47619047619047616,
+                "confidence": 0.533883307661329
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 54,
+                "accuracy": 0.6481481481481481,
+                "confidence": 0.6506845741360275
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 36,
+                "accuracy": 0.6388888888888888,
+                "confidence": 0.7542717705170313
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 48,
+                "accuracy": 0.75,
+                "confidence": 0.8479394651949406
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 100,
+                "accuracy": 0.98,
+                "confidence": 0.9540341722965241
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 280,
+                "coverage": 0.4375,
+                "risk": 0.24285714285714285
+              },
+              "0.8": {
+                "count": 148,
+                "coverage": 0.23125,
+                "risk": 0.0945945945945946
+              },
+              "0.9": {
+                "count": 100,
+                "coverage": 0.15625,
+                "risk": 0.02
+              },
+              "0.95": {
+                "count": 56,
+                "coverage": 0.0875,
+                "risk": 0.017857142857142856
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "paws": {
+            "record_count": 128,
+            "accuracy": 0.8125,
+            "macro_f1": 0.8095238095238095,
+            "brier": 0.3016184392576423,
+            "ece": 0.10399214364588266,
+            "nll": 0.4848052327906357,
+            "label_counts": {
+              "1": 64,
+              "0": 64
+            },
+            "accuracy_wilson_95": [
+              0.7361508192928257,
+              0.8706385830362315
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 4,
+                "accuracy": 0.5,
+                "confidence": 0.5354927629232407
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 2,
+                "accuracy": 0.5,
+                "confidence": 0.6687206625938416
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 10,
+                "accuracy": 0.8,
+                "confidence": 0.7567159116268158
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 14,
+                "accuracy": 0.6428571428571429,
+                "confidence": 0.8583359335150037
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 98,
+                "accuracy": 0.8571428571428571,
+                "confidence": 0.9528779393556167
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 128,
+                "coverage": 1.0,
+                "risk": 0.1875
+              },
+              "0.8": {
+                "count": 112,
+                "coverage": 0.875,
+                "risk": 0.16964285714285715
+              },
+              "0.9": {
+                "count": 98,
+                "coverage": 0.765625,
+                "risk": 0.14285714285714285
+              },
+              "0.95": {
+                "count": 50,
+                "coverage": 0.390625,
+                "risk": 0.04
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "qnli": {
+            "record_count": 128,
+            "accuracy": 0.8828125,
+            "macro_f1": 0.8824609733700642,
+            "brier": 0.16689869409656038,
+            "ece": 0.03502751607447861,
+            "nll": 0.2808330574174417,
+            "label_counts": {
+              "entailment": 64,
+              "not_entailment": 64
+            },
+            "accuracy_wilson_95": [
+              0.8156338413466524,
+              0.9276831765064426
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 6,
+                "accuracy": 0.5,
+                "confidence": 0.5497468709945679
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 14,
+                "accuracy": 0.6428571428571429,
+                "confidence": 0.6592002298150744
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 10,
+                "accuracy": 0.9,
+                "confidence": 0.7536049604415893
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 37,
+                "accuracy": 0.8648648648648649,
+                "confidence": 0.855840657208417
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 61,
+                "accuracy": 0.9836065573770492,
+                "confidence": 0.9482230895855388
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 128,
+                "coverage": 1.0,
+                "risk": 0.1171875
+              },
+              "0.8": {
+                "count": 98,
+                "coverage": 0.765625,
+                "risk": 0.061224489795918366
+              },
+              "0.9": {
+                "count": 61,
+                "coverage": 0.4765625,
+                "risk": 0.01639344262295082
+              },
+              "0.95": {
+                "count": 35,
+                "coverage": 0.2734375,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "sciq": {
+            "record_count": 64,
+            "accuracy": 0.96875,
+            "macro_f1": 0.24603174603174602,
+            "brier": 0.05170543730576406,
+            "ece": 0.048026444856077447,
+            "nll": 0.1456362592950503,
+            "label_counts": {
+              "A": 64
+            },
+            "accuracy_wilson_95": [
+              0.8930270822904169,
+              0.9913878616538281
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 1,
+                "accuracy": 0.0,
+                "confidence": 0.493784636259079
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 4,
+                "accuracy": 0.75,
+                "confidence": 0.7515959143638611
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 6,
+                "accuracy": 1.0,
+                "confidence": 0.8551104068756104
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 53,
+                "accuracy": 1.0,
+                "confidence": 0.9678455355032435
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 63,
+                "coverage": 0.984375,
+                "risk": 0.015873015873015872
+              },
+              "0.8": {
+                "count": 59,
+                "coverage": 0.921875,
+                "risk": 0.0
+              },
+              "0.9": {
+                "count": 53,
+                "coverage": 0.828125,
+                "risk": 0.0
+              },
+              "0.95": {
+                "count": 45,
+                "coverage": 0.703125,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "sst5": {
+            "record_count": 120,
+            "accuracy": 0.575,
+            "macro_f1": 0.5711694546306103,
+            "brier": 0.5569636415265224,
+            "ece": 0.08406466866532962,
+            "nll": 0.9697837658598605,
+            "label_counts": {
+              "very positive": 24,
+              "positive": 24,
+              "negative": 24,
+              "very negative": 24,
+              "neutral": 24
+            },
+            "accuracy_wilson_95": [
+              0.4855775172299302,
+              0.6597696078072643
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 1,
+                "accuracy": 1.0,
+                "confidence": 0.37224268913269043
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 7,
+                "accuracy": 0.42857142857142855,
+                "confidence": 0.46120300037520273
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 27,
+                "accuracy": 0.48148148148148145,
+                "confidence": 0.5344545488004331
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 43,
+                "accuracy": 0.5116279069767442,
+                "confidence": 0.638220023277194
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 31,
+                "accuracy": 0.6774193548387096,
+                "confidence": 0.740857066646699
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 10,
+                "accuracy": 0.8,
+                "confidence": 0.8311450600624084
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 1,
+                "accuracy": 1.0,
+                "confidence": 0.9201715588569641
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 112,
+                "coverage": 0.9333333333333333,
+                "risk": 0.41964285714285715
+              },
+              "0.8": {
+                "count": 11,
+                "coverage": 0.09166666666666666,
+                "risk": 0.18181818181818182
+              },
+              "0.9": {
+                "count": 1,
+                "coverage": 0.008333333333333333,
+                "risk": 0.0
+              },
+              "0.95": {
+                "count": 0,
+                "coverage": 0.0,
+                "risk": null
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "trec": {
+            "record_count": 104,
+            "accuracy": 0.9134615384615384,
+            "macro_f1": 0.9271810963723673,
+            "brier": 0.12134755936007041,
+            "ece": 0.06189342015064681,
+            "nll": 0.26125881728872,
+            "label_counts": {
+              "HUM": 20,
+              "NUM": 20,
+              "ENTY": 20,
+              "ABBR": 4,
+              "DESC": 20,
+              "LOC": 20
+            },
+            "accuracy_wilson_95": [
+              0.8436629055250897,
+              0.9538040514361519
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 1,
+                "accuracy": 0.0,
+                "confidence": 0.49957162141799927
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 4,
+                "accuracy": 0.25,
+                "confidence": 0.5534226447343826
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 4,
+                "accuracy": 0.5,
+                "confidence": 0.6400820761919022
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 8,
+                "accuracy": 0.875,
+                "confidence": 0.7686902731657028
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 17,
+                "accuracy": 0.9411764705882353,
+                "confidence": 0.8772191510480993
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 70,
+                "accuracy": 0.9857142857142858,
+                "confidence": 0.9539203865187509
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 103,
+                "coverage": 0.9903846153846154,
+                "risk": 0.07766990291262135
+              },
+              "0.8": {
+                "count": 87,
+                "coverage": 0.8365384615384616,
+                "risk": 0.022988505747126436
+              },
+              "0.9": {
+                "count": 70,
+                "coverage": 0.6730769230769231,
+                "risk": 0.014285714285714285
+              },
+              "0.95": {
+                "count": 36,
+                "coverage": 0.34615384615384615,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "tweet_offensive": {
+            "record_count": 125,
+            "accuracy": 0.792,
+            "macro_f1": 0.7909161091096243,
+            "brier": 0.28439571142672176,
+            "ece": 0.06894709110260012,
+            "nll": 0.4397409168982165,
+            "label_counts": {
+              "non-offensive": 62,
+              "offensive": 63
+            },
+            "accuracy_wilson_95": [
+              0.7126719198807269,
+              0.8539158901936107
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 27,
+                "accuracy": 0.5555555555555556,
+                "confidence": 0.5476654613459552
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 34,
+                "accuracy": 0.7058823529411765,
+                "confidence": 0.6475481864284066
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 24,
+                "accuracy": 0.8333333333333334,
+                "confidence": 0.7411268576979637
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 19,
+                "accuracy": 1.0,
+                "confidence": 0.8545090462032118
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 21,
+                "accuracy": 1.0,
+                "confidence": 0.9312043502217248
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 125,
+                "coverage": 1.0,
+                "risk": 0.208
+              },
+              "0.8": {
+                "count": 40,
+                "coverage": 0.32,
+                "risk": 0.0
+              },
+              "0.9": {
+                "count": 21,
+                "coverage": 0.168,
+                "risk": 0.0
+              },
+              "0.95": {
+                "count": 6,
+                "coverage": 0.048,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          }
+        },
+        "record_count": 68156,
+        "unique_source_family_count": 12
+      }
+    },
+    "open_jev": {
+      "display_name": "Open-Jev-9B",
+      "status": "complete",
+      "evaluated": 68156,
+      "expected": 68156,
+      "macro_source_accuracy": 0.7193700502777866,
+      "pooled_accuracy": 0.9348113152180292,
+      "sources": {
+        "banking77": {
+          "expected": 153,
+          "evaluated": 153,
+          "complete": true,
+          "correct": 97,
+          "accuracy": 0.6339869281045751
+        },
+        "dbpedia14": {
+          "expected": 66012,
+          "evaluated": 66012,
+          "complete": true,
+          "correct": 62419,
+          "accuracy": 0.9455705023329092
+        },
+        "emotion": {
+          "expected": 382,
+          "evaluated": 382,
+          "complete": true,
+          "correct": 180,
+          "accuracy": 0.4712041884816754
+        },
+        "f2_priority": {
+          "expected": 45,
+          "evaluated": 45,
+          "complete": true,
+          "correct": 38,
+          "accuracy": 0.8444444444444444
+        },
+        "mmlu": {
+          "expected": 255,
+          "evaluated": 255,
+          "complete": true,
+          "correct": 176,
+          "accuracy": 0.6901960784313725
+        },
+        "mmlu_pro": {
+          "expected": 640,
+          "evaluated": 640,
+          "complete": true,
+          "correct": 305,
+          "accuracy": 0.4765625
+        },
+        "paws": {
+          "expected": 128,
+          "evaluated": 128,
+          "complete": true,
+          "correct": 107,
+          "accuracy": 0.8359375
+        },
+        "qnli": {
+          "expected": 128,
+          "evaluated": 128,
+          "complete": true,
+          "correct": 116,
+          "accuracy": 0.90625
+        },
+        "sciq": {
+          "expected": 64,
+          "evaluated": 64,
+          "complete": true,
+          "correct": 62,
+          "accuracy": 0.96875
+        },
+        "sst5": {
+          "expected": 120,
+          "evaluated": 120,
+          "complete": true,
+          "correct": 45,
+          "accuracy": 0.375
+        },
+        "trec": {
+          "expected": 104,
+          "evaluated": 104,
+          "complete": true,
+          "correct": 87,
+          "accuracy": 0.8365384615384616
+        },
+        "tweet_offensive": {
+          "expected": 125,
+          "evaluated": 125,
+          "complete": true,
+          "correct": 81,
+          "accuracy": 0.648
+        }
+      },
+      "metrics": {
+        "aggregate": {
+          "record_count": 68156,
+          "accuracy": 0.9348113152180292,
+          "brier": 0.205216483496566,
+          "ece": 0.2881065231927314,
+          "nll": 0.5472332653527885,
+          "accuracy_wilson_95": [
+            0.932933406447428,
+            0.9366402124379449
+          ],
+          "reliability_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 39,
+              "accuracy": 0.3333333333333333,
+              "confidence": 0.07886306669276494
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 1949,
+              "accuracy": 0.39763981528989223,
+              "confidence": 0.16289459652873783
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 3246,
+              "accuracy": 0.559765865680838,
+              "confidence": 0.24967227366627254
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 3896,
+              "accuracy": 0.8062114989733059,
+              "confidence": 0.3528991593028853
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 5193,
+              "accuracy": 0.9089158482572695,
+              "confidence": 0.45199104177109334
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 7827,
+              "accuracy": 0.9629487670882841,
+              "confidence": 0.5563204451677701
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 14784,
+              "accuracy": 0.9888392857142857,
+              "confidence": 0.6527069035586921
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 13247,
+              "accuracy": 0.994262851966483,
+              "confidence": 0.7490302032188639
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 16982,
+              "accuracy": 0.997644564833353,
+              "confidence": 0.8466145286514009
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 993,
+              "accuracy": 0.9848942598187311,
+              "confidence": 0.9266704511786515
+            }
+          ],
+          "fixed_threshold_risk": {
+            "0.5": {
+              "count": 53833,
+              "coverage": 0.7898497564411057,
+              "risk": 0.010885516318986495
+            },
+            "0.8": {
+              "count": 17975,
+              "coverage": 0.2637332003051822,
+              "risk": 0.00305980528511822
+            },
+            "0.9": {
+              "count": 993,
+              "coverage": 0.01456951699043371,
+              "risk": 0.015105740181268883
+            },
+            "0.95": {
+              "count": 205,
+              "coverage": 0.0030078056223956807,
+              "risk": 0.01951219512195122
+            }
+          },
+          "macro_f1": 0.6494272167190469,
+          "macro_f1_definition": "unweighted mean of per-source macro F1",
+          "probability_metric_weighting": "one vote per test record; ECE recomputed on pooled records"
+        },
+        "source_metrics": {
+          "banking77": {
+            "record_count": 153,
+            "accuracy": 0.6339869281045751,
+            "macro_f1": 0.595444238301381,
+            "brier": 0.7333101127045109,
+            "ece": 0.4222811134349482,
+            "nll": 2.1120493787969337,
+            "label_counts": {
+              "card_acceptance": 2,
+              "top_up_by_cash_or_cheque": 2,
+              "top_up_by_card_charge": 2,
+              "fiat_currency_support": 2,
+              "visa_or_mastercard": 2,
+              "pending_transfer": 2,
+              "automatic_top_up": 2,
+              "verify_source_of_funds": 2,
+              "beneficiary_not_allowed": 2,
+              "transfer_timing": 2,
+              "extra_charge_on_statement": 2,
+              "transfer_fee_charged": 2,
+              "card_linking": 2,
+              "passcode_forgotten": 2,
+              "reverted_card_payment?": 2,
+              "unable_to_verify_identity": 2,
+              "exchange_rate": 2,
+              "lost_or_stolen_card": 2,
+              "verify_top_up": 2,
+              "transfer_not_received_by_recipient": 2,
+              "transaction_charged_twice": 2,
+              "card_not_working": 2,
+              "top_up_by_bank_transfer_charge": 2,
+              "wrong_exchange_rate_for_cash_withdrawal": 2,
+              "cash_withdrawal_charge": 2,
+              "get_disposable_virtual_card": 2,
+              "top_up_limits": 2,
+              "receiving_money": 2,
+              "topping_up_by_card": 2,
+              "card_payment_fee_charged": 2,
+              "verify_my_identity": 2,
+              "edit_personal_details": 2,
+              "exchange_charge": 2,
+              "card_payment_not_recognised": 2,
+              "pending_top_up": 2,
+              "pin_blocked": 2,
+              "request_refund": 2,
+              "getting_spare_card": 2,
+              "lost_or_stolen_phone": 2,
+              "balance_not_updated_after_cheque_or_cash_deposit": 2,
+              "transfer_into_account": 2,
+              "card_delivery_estimate": 2,
+              "top_up_reverted": 2,
+              "declined_cash_withdrawal": 2,
+              "failed_transfer": 2,
+              "apple_pay_or_google_pay": 2,
+              "balance_not_updated_after_bank_transfer": 2,
+              "card_payment_wrong_exchange_rate": 2,
+              "cash_withdrawal_not_recognised": 2,
+              "card_arrival": 2,
+              "card_swallowed": 2,
+              "compromised_card": 2,
+              "declined_card_payment": 2,
+              "activate_my_card": 2,
+              "Refund_not_showing_up": 2,
+              "country_support": 2,
+              "wrong_amount_of_cash_received": 2,
+              "pending_cash_withdrawal": 2,
+              "why_verify_identity": 2,
+              "cancel_transfer": 2,
+              "terminate_account": 2,
+              "atm_support": 2,
+              "top_up_failed": 2,
+              "virtual_card_not_working": 2,
+              "disposable_card_limits": 2,
+              "direct_debit_payment_not_recognised": 2,
+              "order_physical_card": 2,
+              "card_about_to_expire": 2,
+              "change_pin": 2,
+              "supported_cards_and_currencies": 2,
+              "exchange_via_app": 2,
+              "age_limit": 2,
+              "get_physical_card": 2,
+              "pending_card_payment": 2,
+              "contactless_not_working": 1,
+              "declined_transfer": 2,
+              "getting_virtual_card": 2
+            },
+            "accuracy_wilson_95": [
+              0.5552451700689189,
+              0.7061653033370472
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 23,
+                "accuracy": 0.4782608695652174,
+                "confidence": 0.06584463422389134
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 58,
+                "accuracy": 0.6206896551724138,
+                "confidence": 0.14738009741594052
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 38,
+                "accuracy": 0.5789473684210527,
+                "confidence": 0.24393832605136068
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 27,
+                "accuracy": 0.8148148148148148,
+                "confidence": 0.34448775869828685
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 4,
+                "accuracy": 0.75,
+                "confidence": 0.44306980818510056
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 1,
+                "accuracy": 1.0,
+                "confidence": 0.5595422387123108
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 1,
+                "accuracy": 1.0,
+                "confidence": 0.6964118480682373
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 1,
+                "accuracy": 1.0,
+                "confidence": 0.729458212852478
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 3,
+                "coverage": 0.0196078431372549,
+                "risk": 0.0
+              },
+              "0.8": {
+                "count": 0,
+                "coverage": 0.0,
+                "risk": null
+              },
+              "0.9": {
+                "count": 0,
+                "coverage": 0.0,
+                "risk": null
+              },
+              "0.95": {
+                "count": 0,
+                "coverage": 0.0,
+                "risk": null
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "dbpedia14": {
+            "record_count": 66012,
+            "accuracy": 0.9455705023329092,
+            "macro_f1": 0.9444262926388183,
+            "brier": 0.1947777719036495,
+            "ece": 0.2958362281137603,
+            "nll": 0.5271472186952312,
+            "label_counts": {
+              "Company": 4719,
+              "EducationalInstitution": 4721,
+              "Artist": 4724,
+              "Athlete": 4713,
+              "OfficeHolder": 4715,
+              "MeanOfTransportation": 4718,
+              "Building": 4712,
+              "NaturalPlace": 4706,
+              "Village": 4721,
+              "Animal": 4714,
+              "Plant": 4696,
+              "Album": 4722,
+              "Film": 4703,
+              "WrittenWork": 4728
+            },
+            "accuracy_wilson_95": [
+              0.9438138145351535,
+              0.9472753346760162
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 16,
+                "accuracy": 0.125,
+                "confidence": 0.09757706336677074
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 1686,
+                "accuracy": 0.4098457888493476,
+                "confidence": 0.1648508930360083
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 3015,
+                "accuracy": 0.5761194029850746,
+                "confidence": 0.24980246704411546
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 3644,
+                "accuracy": 0.8358946212952799,
+                "confidence": 0.353269555337081
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 5005,
+                "accuracy": 0.9216783216783216,
+                "confidence": 0.45195012308739047
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 7627,
+                "accuracy": 0.973646256719549,
+                "confidence": 0.5564774219027288
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 14536,
+                "accuracy": 0.9947028068244359,
+                "confidence": 0.6527757144353189
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 13054,
+                "accuracy": 0.9976252489658343,
+                "confidence": 0.7489976829010038
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 16761,
+                "accuracy": 0.9995823638207744,
+                "confidence": 0.8466149337301248
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 668,
+                "accuracy": 1.0,
+                "confidence": 0.909805791195995
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 52646,
+                "coverage": 0.7975216627279889,
+                "risk": 0.006002355354632831
+              },
+              "0.8": {
+                "count": 17429,
+                "coverage": 0.26402775252984306,
+                "risk": 0.0004016294681278329
+              },
+              "0.9": {
+                "count": 668,
+                "coverage": 0.010119372235351148,
+                "risk": 0.0
+              },
+              "0.95": {
+                "count": 0,
+                "coverage": 0.0,
+                "risk": null
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "emotion": {
+            "record_count": 382,
+            "accuracy": 0.4712041884816754,
+            "macro_f1": 0.46892681637995937,
+            "brier": 0.6678125577425533,
+            "ece": 0.09882628281859203,
+            "nll": 1.3935131332486452,
+            "label_counts": {
+              "fear": 64,
+              "sadness": 64,
+              "love": 64,
+              "anger": 63,
+              "surprise": 63,
+              "joy": 64
+            },
+            "accuracy_wilson_95": [
+              0.4216828454997783,
+              0.5212989168353478
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 1,
+                "accuracy": 0.0,
+                "confidence": 0.19437390565872192
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 57,
+                "accuracy": 0.24561403508771928,
+                "confidence": 0.25208276013533276
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 84,
+                "accuracy": 0.25,
+                "confidence": 0.3445852892029853
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 59,
+                "accuracy": 0.5423728813559322,
+                "confidence": 0.4512139422408605
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 39,
+                "accuracy": 0.6153846153846154,
+                "confidence": 0.5461595669770852
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 43,
+                "accuracy": 0.5116279069767442,
+                "confidence": 0.6414713083311568
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 39,
+                "accuracy": 0.6410256410256411,
+                "confidence": 0.7470127252432016
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 36,
+                "accuracy": 0.6111111111111112,
+                "confidence": 0.8478113628096051
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 24,
+                "accuracy": 0.8333333333333334,
+                "confidence": 0.9553024421135584
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 181,
+                "coverage": 0.4738219895287958,
+                "risk": 0.3756906077348066
+              },
+              "0.8": {
+                "count": 60,
+                "coverage": 0.15706806282722513,
+                "risk": 0.3
+              },
+              "0.9": {
+                "count": 24,
+                "coverage": 0.06282722513089005,
+                "risk": 0.16666666666666666
+              },
+              "0.95": {
+                "count": 13,
+                "coverage": 0.034031413612565446,
+                "risk": 0.15384615384615385
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "f2_priority": {
+            "record_count": 45,
+            "accuracy": 0.8444444444444444,
+            "macro_f1": 0.8431461012106173,
+            "brier": 0.21182065986458434,
+            "ece": 0.07945745653576321,
+            "nll": 0.37265456828506227,
+            "label_counts": {
+              "high": 15,
+              "medium": 15,
+              "low": 15
+            },
+            "accuracy_wilson_95": [
+              0.7121609112760374,
+              0.9225457651524174
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 1,
+                "accuracy": 0.0,
+                "confidence": 0.38858795166015625
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 3,
+                "accuracy": 0.6666666666666666,
+                "confidence": 0.5504349072774252
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 2,
+                "accuracy": 0.5,
+                "confidence": 0.6786614060401917
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 1,
+                "accuracy": 0.0,
+                "confidence": 0.7845044732093811
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 6,
+                "accuracy": 0.6666666666666666,
+                "confidence": 0.8495504061381022
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 32,
+                "accuracy": 0.96875,
+                "confidence": 0.9874741435050964
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 44,
+                "coverage": 0.9777777777777777,
+                "risk": 0.13636363636363635
+              },
+              "0.8": {
+                "count": 38,
+                "coverage": 0.8444444444444444,
+                "risk": 0.07894736842105263
+              },
+              "0.9": {
+                "count": 32,
+                "coverage": 0.7111111111111111,
+                "risk": 0.03125
+              },
+              "0.95": {
+                "count": 31,
+                "coverage": 0.6888888888888889,
+                "risk": 0.03225806451612903
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "mmlu": {
+            "record_count": 255,
+            "accuracy": 0.6901960784313725,
+            "macro_f1": 0.6894197031418918,
+            "brier": 0.4189055925665199,
+            "ece": 0.06766889025183283,
+            "nll": 0.8148422978621332,
+            "label_counts": {
+              "B": 64,
+              "D": 64,
+              "A": 63,
+              "C": 64
+            },
+            "accuracy_wilson_95": [
+              0.6309699696107149,
+              0.743776797935493
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 6,
+                "accuracy": 0.0,
+                "confidence": 0.2953982353210449
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 43,
+                "accuracy": 0.32558139534883723,
+                "confidence": 0.35224410544994267
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 27,
+                "accuracy": 0.6296296296296297,
+                "confidence": 0.4525455854557179
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 31,
+                "accuracy": 0.6774193548387096,
+                "confidence": 0.5497287050370248
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 32,
+                "accuracy": 0.65625,
+                "confidence": 0.6481221169233322
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 31,
+                "accuracy": 0.7741935483870968,
+                "confidence": 0.7448747984824642
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 32,
+                "accuracy": 0.9375,
+                "confidence": 0.8462010435760021
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 53,
+                "accuracy": 0.9245283018867925,
+                "confidence": 0.9529521060439775
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 179,
+                "coverage": 0.7019607843137254,
+                "risk": 0.18994413407821228
+              },
+              "0.8": {
+                "count": 85,
+                "coverage": 0.3333333333333333,
+                "risk": 0.07058823529411765
+              },
+              "0.9": {
+                "count": 53,
+                "coverage": 0.20784313725490197,
+                "risk": 0.07547169811320754
+              },
+              "0.95": {
+                "count": 28,
+                "coverage": 0.10980392156862745,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "mmlu_pro": {
+            "record_count": 640,
+            "accuracy": 0.4765625,
+            "macro_f1": 0.4759007088258606,
+            "brier": 0.6676387154878671,
+            "ece": 0.08955725861014799,
+            "nll": 1.6188483208156614,
+            "label_counts": {
+              "E": 64,
+              "I": 64,
+              "B": 64,
+              "D": 64,
+              "A": 64,
+              "C": 64,
+              "G": 64,
+              "H": 64,
+              "J": 64,
+              "F": 64
+            },
+            "accuracy_wilson_95": [
+              0.43812308521456467,
+              0.5152815929263084
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 204,
+                "accuracy": 0.23529411764705882,
+                "confidence": 0.15098305598047435
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 120,
+                "accuracy": 0.3333333333333333,
+                "confidence": 0.24365141888459524
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 68,
+                "accuracy": 0.38235294117647056,
+                "confidence": 0.344310178037952
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 67,
+                "accuracy": 0.5522388059701493,
+                "confidence": 0.4553739735439642
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 30,
+                "accuracy": 0.7333333333333333,
+                "confidence": 0.5466220835844676
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 51,
+                "accuracy": 0.803921568627451,
+                "confidence": 0.6457241165871713
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 35,
+                "accuracy": 0.8857142857142857,
+                "confidence": 0.7507597463471549
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 38,
+                "accuracy": 0.868421052631579,
+                "confidence": 0.8459298610687256
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 27,
+                "accuracy": 1.0,
+                "confidence": 0.9618138582618149
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 181,
+                "coverage": 0.2828125,
+                "risk": 0.14917127071823205
+              },
+              "0.8": {
+                "count": 65,
+                "coverage": 0.1015625,
+                "risk": 0.07692307692307693
+              },
+              "0.9": {
+                "count": 27,
+                "coverage": 0.0421875,
+                "risk": 0.0
+              },
+              "0.95": {
+                "count": 19,
+                "coverage": 0.0296875,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "paws": {
+            "record_count": 128,
+            "accuracy": 0.8359375,
+            "macro_f1": 0.83544536271809,
+            "brier": 0.24679583010305642,
+            "ece": 0.04257594002410765,
+            "nll": 0.3866634039960962,
+            "label_counts": {
+              "1": 64,
+              "0": 64
+            },
+            "accuracy_wilson_95": [
+              0.7621819239629298,
+              0.8901166835408066
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 10,
+                "accuracy": 0.6,
+                "confidence": 0.5453545272350311
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 13,
+                "accuracy": 0.6923076923076923,
+                "confidence": 0.6646388035554153
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 14,
+                "accuracy": 0.6428571428571429,
+                "confidence": 0.7501072755881718
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 23,
+                "accuracy": 0.8695652173913043,
+                "confidence": 0.8487605685773103
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 68,
+                "accuracy": 0.9264705882352942,
+                "confidence": 0.9641700185397092
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 128,
+                "coverage": 1.0,
+                "risk": 0.1640625
+              },
+              "0.8": {
+                "count": 91,
+                "coverage": 0.7109375,
+                "risk": 0.08791208791208792
+              },
+              "0.9": {
+                "count": 68,
+                "coverage": 0.53125,
+                "risk": 0.07352941176470588
+              },
+              "0.95": {
+                "count": 47,
+                "coverage": 0.3671875,
+                "risk": 0.02127659574468085
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "qnli": {
+            "record_count": 128,
+            "accuracy": 0.90625,
+            "macro_f1": 0.9062271062271062,
+            "brier": 0.1910439448137092,
+            "ece": 0.13965881848707795,
+            "nll": 0.34040456282248155,
+            "label_counts": {
+              "entailment": 64,
+              "not_entailment": 64
+            },
+            "accuracy_wilson_95": [
+              0.8432700274269215,
+              0.945556195600853
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 16,
+                "accuracy": 0.5625,
+                "confidence": 0.5584869086742401
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 25,
+                "accuracy": 0.96,
+                "confidence": 0.649072859287262
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 28,
+                "accuracy": 0.9285714285714286,
+                "confidence": 0.7625490874052048
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 38,
+                "accuracy": 0.9736842105263158,
+                "confidence": 0.8443822876403206
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 21,
+                "accuracy": 0.9523809523809523,
+                "confidence": 0.9296741826193673
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 128,
+                "coverage": 1.0,
+                "risk": 0.09375
+              },
+              "0.8": {
+                "count": 59,
+                "coverage": 0.4609375,
+                "risk": 0.03389830508474576
+              },
+              "0.9": {
+                "count": 21,
+                "coverage": 0.1640625,
+                "risk": 0.047619047619047616
+              },
+              "0.95": {
+                "count": 3,
+                "coverage": 0.0234375,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "sciq": {
+            "record_count": 64,
+            "accuracy": 0.96875,
+            "macro_f1": 0.24603174603174602,
+            "brier": 0.05676796347045866,
+            "ece": 0.05584106314927343,
+            "nll": 0.13960703523155119,
+            "label_counts": {
+              "A": 64
+            },
+            "accuracy_wilson_95": [
+              0.8930270822904169,
+              0.9913878616538281
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 3,
+                "accuracy": 1.0,
+                "confidence": 0.6758214632670084
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 3,
+                "accuracy": 0.3333333333333333,
+                "confidence": 0.7704880237579346
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 3,
+                "accuracy": 1.0,
+                "confidence": 0.860106885433197
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 55,
+                "accuracy": 1.0,
+                "confidence": 0.9841791087930852
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 64,
+                "coverage": 1.0,
+                "risk": 0.03125
+              },
+              "0.8": {
+                "count": 58,
+                "coverage": 0.90625,
+                "risk": 0.0
+              },
+              "0.9": {
+                "count": 55,
+                "coverage": 0.859375,
+                "risk": 0.0
+              },
+              "0.95": {
+                "count": 49,
+                "coverage": 0.765625,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "sst5": {
+            "record_count": 120,
+            "accuracy": 0.375,
+            "macro_f1": 0.30060078454665823,
+            "brier": 0.6984001237983001,
+            "ece": 0.2273685649037361,
+            "nll": 1.2934203329266913,
+            "label_counts": {
+              "very positive": 24,
+              "positive": 24,
+              "negative": 24,
+              "very negative": 24,
+              "neutral": 24
+            },
+            "accuracy_wilson_95": [
+              0.29352429786446804,
+              0.4642304937402079
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 7,
+                "accuracy": 0.42857142857142855,
+                "confidence": 0.26751963581357685
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 25,
+                "accuracy": 0.44,
+                "confidence": 0.3596533393859863
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 21,
+                "accuracy": 0.5714285714285714,
+                "confidence": 0.44938765253339497
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 36,
+                "accuracy": 0.2777777777777778,
+                "confidence": 0.5514372504419751
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 25,
+                "accuracy": 0.28,
+                "confidence": 0.6437665915489197
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 3,
+                "accuracy": 0.3333333333333333,
+                "confidence": 0.7208026051521301
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 3,
+                "accuracy": 0.3333333333333333,
+                "confidence": 0.8256752689679464
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 67,
+                "coverage": 0.5583333333333333,
+                "risk": 0.7164179104477612
+              },
+              "0.8": {
+                "count": 3,
+                "coverage": 0.025,
+                "risk": 0.6666666666666666
+              },
+              "0.9": {
+                "count": 0,
+                "coverage": 0.0,
+                "risk": null
+              },
+              "0.95": {
+                "count": 0,
+                "coverage": 0.0,
+                "risk": null
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "trec": {
+            "record_count": 104,
+            "accuracy": 0.8365384615384616,
+            "macro_f1": 0.8659286817181555,
+            "brier": 0.2569899792233774,
+            "ece": 0.09780073466782388,
+            "nll": 0.5507773212573457,
+            "label_counts": {
+              "HUM": 20,
+              "NUM": 20,
+              "ENTY": 20,
+              "ABBR": 4,
+              "DESC": 20,
+              "LOC": 20
+            },
+            "accuracy_wilson_95": [
+              0.7537363724335733,
+              0.8953646390465073
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 3,
+                "accuracy": 0.3333333333333333,
+                "confidence": 0.2533971120913823
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 4,
+                "accuracy": 0.25,
+                "confidence": 0.34875528514385223
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 10,
+                "accuracy": 0.6,
+                "confidence": 0.4619284301996231
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 8,
+                "accuracy": 0.75,
+                "confidence": 0.576909601688385
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 9,
+                "accuracy": 0.8888888888888888,
+                "confidence": 0.6638103988435533
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 15,
+                "accuracy": 0.8,
+                "confidence": 0.7607135852177938
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 28,
+                "accuracy": 0.9285714285714286,
+                "confidence": 0.8439294121095112
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 27,
+                "accuracy": 1.0,
+                "confidence": 0.9338507917192247
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 87,
+                "coverage": 0.8365384615384616,
+                "risk": 0.09195402298850575
+              },
+              "0.8": {
+                "count": 55,
+                "coverage": 0.5288461538461539,
+                "risk": 0.03636363636363636
+              },
+              "0.9": {
+                "count": 27,
+                "coverage": 0.25961538461538464,
+                "risk": 0.0
+              },
+              "0.95": {
+                "count": 8,
+                "coverage": 0.07692307692307693,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          },
+          "tweet_offensive": {
+            "record_count": 125,
+            "accuracy": 0.648,
+            "macro_f1": 0.6216290588882774,
+            "brier": 0.383282229837961,
+            "ece": 0.09332143926620484,
+            "nll": 0.5489173023884378,
+            "label_counts": {
+              "non-offensive": 62,
+              "offensive": 63
+            },
+            "accuracy_wilson_95": [
+              0.5610025545352819,
+              0.7261720889270535
+            ],
+            "reliability_bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "count": 0,
+                "accuracy": null,
+                "confidence": null
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "count": 26,
+                "accuracy": 0.38461538461538464,
+                "confidence": 0.5484288999667535
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "count": 44,
+                "accuracy": 0.5227272727272727,
+                "confidence": 0.6499815881252289
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "count": 23,
+                "accuracy": 0.782608695652174,
+                "confidence": 0.7493360275807588
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "count": 14,
+                "accuracy": 0.8571428571428571,
+                "confidence": 0.8540965488978794
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "count": 18,
+                "accuracy": 1.0,
+                "confidence": 0.944504502746794
+              }
+            ],
+            "fixed_threshold_risk": {
+              "0.5": {
+                "count": 125,
+                "coverage": 1.0,
+                "risk": 0.352
+              },
+              "0.8": {
+                "count": 32,
+                "coverage": 0.256,
+                "risk": 0.0625
+              },
+              "0.9": {
+                "count": 18,
+                "coverage": 0.144,
+                "risk": 0.0
+              },
+              "0.95": {
+                "count": 7,
+                "coverage": 0.056,
+                "risk": 0.0
+              }
+            },
+            "fitted_temperature": false,
+            "macro_f1_label_policy": "all offered classes, zero for absent classes"
+          }
+        },
+        "record_count": 68156,
+        "unique_source_family_count": 12
+      }
+    }
+  },
+  "scope": "Fixed local engineering comparison of released models with different training histories. Exact external training/test overlap is not yet audited. These are Static results, not RSI results.",
+  "test_data_included": false
+}
