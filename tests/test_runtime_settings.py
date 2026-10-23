@@ -21,6 +21,16 @@ def test_runtime_change_records_continuation_without_discarding_optimizer():
     assert result["config_changes"]["checkpoint_layer_stride"]["after"] == 2
 
 
+def test_structured_executor_paths_are_explicit_runtime_migration_targets():
+    old, new = manifests()
+    old["code"] = {"DeciForm/scripts/train_structured.py": "old", "adapter.py": "fixed"}
+    new["code"] = {"DeciForm/scripts/train_structured.py": "new", "adapter.py": "fixed"}
+    assert validate_runtime_migration(old, new)["optimizer_restored"]
+    new["code"]["adapter.py"] = "changed"
+    with pytest.raises(ValueError, match="source code"):
+        validate_runtime_migration(old, new)
+
+
 @pytest.mark.parametrize("field,value", [("learning_rate", 3e-5), ("global_batch_size", 256)])
 def test_runtime_migration_rejects_training_changes(field, value):
     old, new = manifests()

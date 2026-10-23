@@ -14,3 +14,7 @@ logs/
 *.sqlite
 *.sqlite-*
 *.local.json
+
+# Local immutable migration snapshots may contain historical machine paths.
+legacy/jev_rsi/
+configs/local/

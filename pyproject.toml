@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "deciform"
-version = "0.1.0"
+version = "0.1.1"
 description = "Open-weight models for structured decision making"
 requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
@@ -12,6 +12,7 @@ dependencies = ["numpy>=1.26,<3", "torch>=2.10", "transformers>=5.3,<6", "peft>=
 
 [project.optional-dependencies]
 test = ["pytest>=8,<10"]
+data = ["datasets>=3,<6", "pyarrow>=15"]
 
 [tool.setuptools]
 package-dir = {"" = "src"}

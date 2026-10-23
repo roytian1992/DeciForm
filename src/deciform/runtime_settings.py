@@ -33,7 +33,9 @@ def validate_runtime_migration(original, current, *, allow_worker_resize=False):
     code_changes = {k: {"before": original["code"].get(k), "after": current["code"].get(k)}
                     for k in original["code"].keys() | current["code"].keys()
                     if original["code"].get(k) != current["code"].get(k)}
-    allowed_code = {"scripts/train.py", "src/deciform/runtime_settings.py"}
+    allowed_code = {"scripts/train.py", "src/deciform/runtime_settings.py",
+                    "DeciForm/scripts/train_structured.py",
+                    "DeciForm/src/deciform/runtime_settings.py"}
     if code_changes.keys() - allowed_code:
         raise ValueError("runtime migration changed model, adapter, data or loss source code")
     return {"config_changes": changes, "code_changes": code_changes,

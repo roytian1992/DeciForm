@@ -151,9 +151,15 @@ inventory and passing overlap audit; see [evaluation.md](docs/evaluation.md).
 
 ## Project boundary
 
-DeciForm owns the model, supervised training, calibration metadata and evaluation
-interfaces. Recursive self-improvement research can consume checkpoints through
-these interfaces in a separate project. This release is a supervised Static model.
+DeciForm owns all decision-model development: architecture, supervised training,
+LoRA implementations, optimization, inference, calibration and model evaluation.
+JEV_RSI owns recursive strategies, self-edits, reward/budget accounting and
+experiment orchestration. It imports deciform and calls the model training
+primitives here. See [project_boundary.md](docs/project_boundary.md).
+
+New standalone training runs and model comparisons belong to DeciForm/runs.
+Published models belong to checkpoints. Recursive candidate runs remain with
+the calling RSI experiment. This release is a supervised Static model.
 
 ## Provenance and license
 
