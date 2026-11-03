@@ -146,3 +146,40 @@ evidence are recorded separately after successful launch. No backup requested.
 Primary sources: Gneiting, *Making and Evaluating Point Forecasts*,
 https://arxiv.org/abs/0912.0902; Pedregosa et al., *On the Consistency of Ordinal
 Regression Methods*, https://www.jmlr.org/papers/v18/15-495.html.
+
+### 05:36 Asia/Shanghai — launched and initial training verified
+
+Both tmux supervisors launched at 05:25:29. Distributed preflights passed with
+zero optimizer updates and peak allocated memory 54.651176 GiB. At 05:36:23
+both were training at step 100/3125, with 6,400 visits. Step times were
+4.9674 / 4.9629 seconds and training peak memory 55.304055 GiB. No failure or
+alert files were present. All trainable counts are 46,304,262. The complete
+initial head hash matches between D1/D2; their LoRA/pointer/base hashes match
+A4, and each training initialization exactly matches its own zero-update
+preflight. Inherited adapter/head fields are null. First-step reference CE
+matches exactly across arms for all three tasks on the same 64 rows.
+
+The frozen ordinal scale is 3.0383850790577127. Launch verification, tests and
+initial diagnostics are saved in root `launch_verified.json`; source commit
+is `02eef73`. Both jobs will automatically evaluate dev and in-domain test.
+
+After objective/decoder freeze and training launch, CPU reference replay
+completed for 7 models with identical 2,000/5,000 score dev/test IDs. Every
+original argmax MAE was reproduced; original files were not changed. Test MAE:
+
+| Model | Argmax | Median (new primary) | Mean (continuous) | Nearest-native mean |
+|---|---:|---:|---:|---:|
+| A4 | 0.4296 | 0.4148 | 0.4801932 | 0.4246 |
+| Kev | 0.4396 | 0.4256 | 0.4808593 | 0.4262 |
+| Ordinary LoRA | 0.7836 | 0.5196 | 0.5777439 | 0.5286 |
+| Full v6 | 0.4320 | 0.4214 | 0.4813024 | 0.4238 |
+| L4 ordinal auxiliary | 0.4350 | 0.4194 | 0.4777161 | 0.4238 |
+| M1 regression auxiliary | 0.4340 | 0.4228 | 0.4794334 | 0.4284 |
+| M2 conditional choice | 0.4320 | 0.4210 | 0.4797832 | 0.4310 |
+
+Source: `reference_score_rules/dev.json` and `test_in_domain.json` under the
+run root, including input hashes, exact counts and source breakdowns. These
+decoder changes improve some point metrics without changing weights. A4
+remains the lowest median MAE among these references; no improvement from the
+new training can yet be claimed. Neither training config was changed after
+this alternative test replay.
