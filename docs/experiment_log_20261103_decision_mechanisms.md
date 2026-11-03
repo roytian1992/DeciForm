@@ -145,3 +145,33 @@ Evidence: root `validation.json`, `matched_control_audit.json`,
 `launch_verified.json`, per-arm `preflight.json`, `initialization.json`,
 `loss_diagnostics.jsonl` and `progress.json`. Code commit: `bf29ddd`. Both remain
 under tmux supervision, with automatic full-native dev/test after epoch 1.
+
+### 2026-11-04 03:47 Asia/Shanghai — both complete
+
+Both supervisors exited successfully after 3,125 updates / 200,000 visits and
+full-native dev (6,000) plus in-domain test (15,000), without failure/alert files.
+M1 finished at approximately 03:30:55, M2 at 03:31:45. Training took
+15,191.46 / 15,241.02 seconds; dev plus test took 233.58 / 230.51 seconds.
+All eight training GPUs are released; retained BGE service contexts remain.
+
+| Original argmax test protocol | Choice accuracy | Noul accuracy | Score MAE |
+|---|---:|---:|---:|
+| A4 | 0.7262 | 0.8916 | 0.4296 |
+| Kev | 0.7248 | 0.8874 | 0.4396 |
+| M1 score regression auxiliary | 0.7218 | 0.8870 | 0.4340 |
+| M2 conditional choice metric | 0.7254 | 0.8888 | 0.4320 |
+
+Neither mechanism exceeds A4 on these three test metrics. M2 exceeds the Kev
+point estimates, but does not establish an improvement over the existing A4.
+The four-versus-two-GPU comparison caveat above remains applicable.
+
+Dev results (choice / noul / score argmax MAE): M1 0.7545 / 0.8925 / 0.4245;
+M2 0.7525 / 0.8945 / 0.4215. The M1 regression head's 2,000-row dev MAE is
+0.433091 raw, 0.431045 clipped to range, and 0.4135 projected to nearest native
+support. Probability-median dev MAE is 0.4120 for M1 and 0.4100 for M2. These
+are separate dev diagnostics, not test-protocol changes or evidence of superior
+test MAE. No additional training or alternative test decoding was launched.
+
+Source: root `results_summary.json`, which records the exact paths/hashes of
+all primary dev/test reports, completion files, and separate dev diagnostics.
+Frozen references and completed checkpoints remain preserved.
