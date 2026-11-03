@@ -120,3 +120,28 @@ largest complete evaluation requests, dense/first global batches, actual memory,
 and initial LoRA/pointer/base hashes against A4. Actual launch evidence is to be
 appended after both preflights and first optimizer updates pass. No backup was
 requested.
+
+### 23:15 Asia/Shanghai — both training runs verified
+
+Both tmux supervisors were started at 23:10:49. Their distributed preflights
+passed with zero optimizer updates: score peak 54.6522 GiB, choice 54.6513 GiB.
+New-branch synchronized gradient norms were 0.230764 and 0.024377 respectively.
+Actual trainable parameter counts matched the table above. Fresh training
+initializations exactly match their preflight initializations and A4's
+LoRA/pointer/base hashes; inherited adapter/head fields are null.
+
+At 23:15:23 both are training at 20/3125 updates, 1,280/200,000 visits. Recent
+step times are 5.2805 s (score) and 5.2456 s (choice). Early remaining-training
+estimates are 4.55 h and 4.52 h, not a final throughput claim. Training peak
+allocated memory is 55.3056/55.3019 GiB. No failure or alert files were present.
+
+The first-step diagnostics contain the same 64 rows, split 16 choice / 26 noul /
+22 score. All three per-task classification losses match exactly between arms
+at their common initialization. Only the score-regression arm adds the declared
+0.5 native MAE term (0.6590909 average weighted contribution on its 22 score
+rows). This independently checks loss isolation before the models diverge.
+
+Evidence: root `validation.json`, `matched_control_audit.json`,
+`launch_verified.json`, per-arm `preflight.json`, `initialization.json`,
+`loss_diagnostics.jsonl` and `progress.json`. Code commit: `bf29ddd`. Both remain
+under tmux supervision, with automatic full-native dev/test after epoch 1.
