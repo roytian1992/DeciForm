@@ -140,3 +140,61 @@ error; the saved diagnostic uses native Python scalars and completed normally.
 No new model training, original-report replacement, or test decoder change.
 Next proposal: a genuine ordinal main objective plus matched decision analysis,
 and training-batch shared-gradient measurements before any conflict mechanism.
+
+## User steering: focus choice and score; freeze noul BCE
+
+The latest user instruction narrows optimization to choice and score. Keep
+noul Bernoulli NLL fixed; do not queue further noul loss sweeps. The user asks
+whether score should be regression or regression plus classification. The
+preferred next score hypothesis is now a shared-representation, separate-output
+classification/median-regression model; a pure ordinal main objective remains
+an alternative, not an automatically queued extra run.
+
+Score proposal:
+
+    p = categorical_head(h, native_support)
+    m = numeric_median_head(h, score_range)
+    L_score = lambda_cls * (-log p_y) + lambda_reg * |m-y|.
+
+The positive coefficients must be fixed using training/development information.
+At population optimum and sufficient function capacity, these heads can
+simultaneously estimate the label distribution and a conditional median. Do
+not call MSE a direct MAE surrogate: its optimum is the conditional mean.
+Likewise, using sum_j p_j s_j as the regression prediction can force a conflict
+between calibrated probabilities and a median-seeking absolute-error objective.
+Separate outputs avoid imposing that identity, though shared-parameter
+optimization can still interfere. No arbitrary probability-mean consistency
+term should be added.
+
+Normalize coordinates using each declared native range [a,b], with R=b-a,
+u=(y-a)/R and m=a+R*m_normalized. Raw MAE is R*|m_normalized-u|; silently removing
+R changes weighting across score ranges. Preserve the intended metric weighting
+and disclose any task scale. A discrete score task must still emit one of its
+native values; a continuous head does not authorize changing its output domain.
+For the first isolated comparison, preserve the original classification argmax
+headline and treat the regression head as auxiliary training. Regression/native
+projection and probability-median decisions can be compared on dev separately;
+any adopted new headline decision rule needs an explicit matched protocol.
+
+Choice proposal: improve question-conditioned geometry instead of another
+scalar reweighting of CE. The current QF in scripts/kev_ours_v5.py uses
+query-relative features but a shared static quadratic readout vector. A
+candidate mechanism is
+
+    u_i = b_i - gamma * sum_r a_r(x) (v_ir - mu_r(x))^2,
+    a_r(x) > 0, with mean_r a_r(x) = 1.
+
+The question generates dimension weights, giving a positive diagonal precision
+in a learned low-dimensional space. Equal-prior Gaussian compatibility with a
+shared query-conditioned covariance gives this quadratic ranking energy; the
+log determinant is common across candidates and cancels in their softmax.
+This is an inductive interpretation, not a claim that real candidate embeddings
+are Gaussian. The low-rank PSD metric and small residual gate retain a stable
+independent score and need no second backbone pass. This extends the existing
+QF's conditioning; it is not the claim that CE lacks ranking gradients or that
+metric learning itself is novel. Final quality and speed require measurement.
+
+Implementations and training for these proposals have not been started. Keep
+the frozen data/negative IDs, native full evaluation, backbone and budget. First
+isolate the score dual-output change and the choice metric change; combining
+them before either is measured would obscure which mechanism helps.
