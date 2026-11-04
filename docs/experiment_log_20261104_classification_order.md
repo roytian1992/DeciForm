@@ -68,3 +68,12 @@ Choice 全部完成后自动生成 Choice/Noul 当前汇总。
 原始 checkpoint、配置、代码快照、输入和输出哈希由新 manifest 记录。
 是否实际启动以 root `status.json`、各模型 `progress.json` 和
 `checkpoint_loaded.json` 为准，不把 CPU 测试当成 GPU 结果。未请求备份。
+
+### 18:58 Asia/Shanghai — 队列启动核实
+
+代码 commit `483f5fb`。真实 tokenizer 检查覆盖每个来源的样本及长输入，
+共 15 条、45 次原始 cache 一致性检查、225 个排列视图全部通过。
+`cpu_validation.json` 已保存。tmux `deciform_choice_order_20261104` 已启动，
+6 卡普通 LoRA、7 卡 D2 worker 均已进入 loading_model，监管 status 为
+evaluating、failures 为空。此时尚无 Choice GPU 预测结果。新的分类汇总
+已生成，只含 Noul，并明确四个 Choice 模型仍 pending。
