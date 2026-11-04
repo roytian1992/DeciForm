@@ -1,6 +1,6 @@
 # 独立 Score 专项实验规划：评分粒度与分布学习
 
-更新：2026-11-04 20:58，Asia/Shanghai。状态：**S3/S4 训练和完整评测均已完成，4–5 卡已释放；ASAP S1/S2 仍未准入。**
+更新：2026-11-04 22:06，Asia/Shanghai。状态：**S3/S4 已完成；ASAP S1/S2 已通过预检，正在 4–5 / 6–7 卡训练，已核验均到 10/122 步，结束后自动评测。**
 实际执行记录见 `docs/experiment_log_20261104_score_specialist.md`，
 运行根目录为 `runs/formal_score_specialist_20261104_v1/`。
 
@@ -43,7 +43,7 @@ cumulative-link Score head，因此不把这些对照描述成“无序 vs 有�
 
 | 数据 | 原生监督 | 当前接收状态 | 角色 |
 |---|---|---|---|
-| ASAP-AES，全部 8 个 prompt | 4/5/6/11/31/61 档的整数总分 | 已定位原站与论文作者固定划分；接收状态见下方 manifest | 原生多档位主面板 |
+| ASAP-AES，全部 8 个 prompt | 4/5/6/11/31/61 档的整数总分 | 已通过 HF 镜像取得原件，按作者 fold 0 构建；最终数量见第 10 节 | 原生多档位主面板 |
 | STS-B | 0–5 实值相似度标签 | 5,749 train / 1,500 dev / 1,379 test 已暂存，三个 SHA-256 本轮复核通过 | 连续标签、小数精度 |
 | WMT20 MLQE，en-de + en-zh | 原始 0–100 人工分数、均值和标准化值 | 14,000 train / 2,000 dev / 2,000 test 已下载，六个 SHA-256 本轮复核通过 | 宽范围、标注分歧 |
 
@@ -92,7 +92,7 @@ WMT 实验以发布的原始评分均值为目标，保留小数；`scores` 仅�
 | S3 | STS-B + 两种 WMT 语言对 | 同一架构、统一连续标签适配 | 插值软标签 CE | 连续面板 matched control |
 | S4 | 与 S3 完全相同 | 与 S3 相同 | 插值软标签 CDF log loss | 连续分布目标的效应 |
 
-由于 ASAP 下载未成功，当前先运行 S3/S4；S1/S2 等正文与 rubric 准入后再启动。
+S3/S4 已先完成；ASAP 正文与 rubric 现已准入，S1/S2 接续执行。
 每组固定两张卡，四张卡可同时运行一对；两张卡也可以顺序完成四组。
 两套数据分别混合训练一次，按来源/prompt
 分别评价；不为每个数据源单独训两个模型。一个固定 seed 20261101，默认
@@ -231,3 +231,27 @@ WMT en-zh `12.0130/11.1807`。不混合不同量程的原始 MAE 作总体结论
 S4 在这套连续面板上降低等来源 NMAE 约 6.4%，并非全部来源都提升，
 但它是 Score 专项连续标签结果，不能写成 D2 在现有五档主测试上的提升。
 结果文件为 `runs/formal_score_specialist_20261104_v1/results_summary.json`。
+
+## 10. ASAP S1/S2 启动（2026-11-04 21:57）
+
+之前失败的是 GitHub 原始文件的网络连接，不是 HF 下载；本次 GitHub raw
+恢复，取得固定 fold 0 IDs，原始作文和 8 份完整题目说明通过
+`hf-mirror.com` 下载自 `TasfiaS/ASAP-AES` 固定 revision，SHA-256 校验通过。
+全部原始记录和 ID 划分均为 12,978 条，原始 train/dev/test 为
+7,787 / 2,593 / 2,598。清除训练中的 2 条跨划分重复和 1 条内部重复后，
+冻结为 **7,784 / 2,593 / 2,598**；dev/test 不删题。
+
+数据目录 `data/score_specialist_asap_fold0_20261104_v1/`，运行目录
+`runs/formal_score_asap_20261104_v1/`。S1 CE 用 4–5，S2 原 D2 CDF 用 6–7，
+均 fresh base、两卡、batch 64、1 epoch、122 updates，训练后自动完整原生
+支持集评测，主指标仍为原生 MAE 和等 prompt NMAE。
+原始全文、阅读材料、评分规则都保留，最长输入 6,826 tokens，无硬截断。
+65 项测试、27 条真实 tokenizer 缓存核对通过。
+原件编码瑕疵和作者逐字匹配证据、启动命令及后续状态详见
+`docs/experiment_log_20261104_asap_score.md`。当前 D2 full 和 S3/S4 结果不变。
+
+启动核验：两组均通过零更新 GPU 预检，LoRA/head/pointer 的全新初值彼此
+一致，且匹配 D2 当时的 fresh initialization；没有继承任何训练权重。
+已观测两组均为 10/122 步，训练峰值 allocated 显存约 46.32 GiB/卡，
+无 failure/alert。前十步平均约 26.6–26.9 秒/步，剩余训练约 50 分钟，
+此估计不含随后自动评测。证据为新运行根的 `launch_verified.json`。
