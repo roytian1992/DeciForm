@@ -107,3 +107,16 @@ original encodings matched the frozen caches exactly across three encoder
 families, and 3,300 order views preserved semantic support and expected input
 changes. No GPU inference result is claimed from these CPU checks. No backup
 requested.
+
+### 12:49 Asia/Shanghai — automatic evaluation queue verified
+
+Source commit `400a538`; the frozen run contains 22,000 ordinary-LoRA,
+72,000 Kev, 67,000 generative-LoRA and 72,000 D2 prediction cases (233,000
+total, excluding unchanged-repeat controls). These are view counts over the
+10,000 native-panel rows and 2,000 instruction-panel rows, not extra test
+examples. Tmux `deciform_answer_order_20261104` is live. Root `status.json`
+confirms `waiting_for_gpus`, with A2 still training and GPUs 6/7 still occupied
+by that run. No GPU inference or robustness result has occurred yet. All
+source hashes were rechecked after queue launch; CPU test/input proof is saved
+in root `launch_verification.json`. The queue will start automatically after
+A2 exits successfully and releases those GPUs.
