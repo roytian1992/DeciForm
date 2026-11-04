@@ -1,5 +1,15 @@
 # Score/Noul answer-order robustness (2026-11-04)
 
+**Latest user correction, 2026-11-04:** the active flip-rate study covers
+Choice and Noul only. The completed experiment below evaluated Score/Noul,
+so its Score flip-rate tables are not the current classification report, and
+it did not evaluate Choice. Preserve these old files as historical provenance.
+Current output is `runs/formal_answer_order_20261104_v1/classification_report.json`;
+Noul is reused and Choice is completed separately under
+`runs/formal_choice_order_20261104_v1`. See
+`docs/experiment_log_20261104_classification_order.md` for the correction.
+Do not run additional Score permutations or report Score flip-rate advantages.
+
 ## Question, models, and scope
 
 The user requested order experiments with ordinary LoRA, Kev, JSON-generative
