@@ -58,3 +58,20 @@ launch. The project environment is `qwen35-train` at
 and older A1/A2/A3 parameter counts. Added isolated D2 ablation model,
 worker, manifest preparer and sequential GPU queue. Fifty-five focused
 score-distribution/ablation/v6 tests passed. No backup requested.
+
+### 11:35 Asia/Shanghai — launches verified
+
+Source commit: `53440fe`. All three config and source hashes passed independent
+CPU audit after preparation. Tmux queues:
+`deciform_d2_ablate_g03_20261104` runs A1 then A3 on GPUs 0--3;
+`deciform_d2_ablate_g47_20261104` runs A2 on GPUs 4--7. Both A1 and A2
+supervisors passed zero-update distributed preflight. Peak allocated memory:
+54.617794 / 54.650139 GiB. Their fresh initial base, LoRA, complete head
+and pointer hashes all match the completed D2 full initialization; both
+inherited-weight fields are null. Preflight verified the exact frozen D2
+ordinal objective and one architecture mask per arm. At 11:35:38, A1/A2
+were training at 60/3125 and 50/3125 steps respectively, each around
+4.98 seconds per recent step with no alert or failure. A3 is pending in the
+frozen A1-following queue; it is not yet a completed or running train arm.
+Use each arm's `status.json`, `progress.json`, `preflight.json`,
+`initialization.json` and the root `queue_*.json` for current state.
