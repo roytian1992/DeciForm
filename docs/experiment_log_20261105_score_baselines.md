@@ -1,0 +1,104 @@
+# Score baselines, 2026-11-05
+
+## Authorized scope and comparison
+
+The user explicitly cancelled ordinary LoRA in this Score study and authorized
+Kev and JSON-generative LoRA on GPUs 0–3. Four fresh-base runs cover the two
+frozen panels; the existing S1/S2/S3/S4 Score specialist checkpoints/results are
+reused. The candidate-independent main model continues on GPUs 4–7 unchanged.
+No additional ordinary LoRA model or per-K threshold bank is adopted or queued.
+
+| Panel | Training | Dev | Test | Runs | Complete allowed scores |
+|---|---:|---:|---:|---|---|
+| ASAP author fold 0 | 7,784 | 2,593 | 2,598 | Kev, JSON LoRA | Native 4/5/6/11/31/61 integer levels |
+| STS-B + WMT en-de/en-zh | 11,457 | 3,500 | 3,379 | Kev, JSON LoRA | 51/101-point grid for pointer models; original continuous range for JSON |
+
+Both baselines retain the established formal all-target LoRA configuration:
+rank 16, alpha 32, dropout .05. Kev keeps the original pointer head and has
+45,376,000 trainable parameters. JSON-generative LoRA keeps its original frozen
+vocabulary readout and has 43,278,336 trainable parameters. Neither receives
+our routing, geometry, QF, ordinal readout, structural penalty or CDF loss.
+
+- Kev uses categorical CE on native integer scores; continuous labels use the
+  exact same adjacent-grid soft-label interpolation as S3/S4, without rounding.
+- JSON LoRA uses teacher-forced token CE for an explicitly requested JSON object
+  containing the original numeric label. ASAP requires an allowed integer;
+  continuous tasks allow finite fractional numbers within the original range.
+- Full original state, essay, task, rubric and score range are retained. Only
+  baseline-specific encoding/output formatting differs; no input truncation,
+  score candidate sampling, new record selection or label modification.
+- Each run initializes from the original Qwen3.5-9B base, no trained checkpoint.
+  Initial LoRA (and Kev pointer) hashes must match the respective formal
+  baseline's fresh initialization. Seed 20261101, batch 64, two GPUs, one epoch,
+  OneCycle with 30% warmup, fixed endpoint: 122 ASAP or 180 continuous updates.
+- Half the decoder layers checkpoint activations. ASAP packing budget 4096;
+  continuous train/eval packing budgets 8192/16384. A longer single request is
+  processed completely. These are the existing specialist settings.
+
+## Evaluation contract
+
+Every dev/test row is retained. Probability models use the frozen native-grid
+median, with the same four decision-rule diagnostics as existing specialists.
+Generated JSON uses its actual numeric answer; no invented distribution, median,
+NLL or calibration values are assigned to a generated scalar. Thus continuous
+JSON is not restricted to the pointer's representation grid, which is disclosed
+as a baseline interface difference and not a matched loss-only comparison.
+
+JSON parsing rejects duplicate/extra keys, malformed JSON, nonfinite numbers,
+wrong types and out-of-range values. No regex extraction, repair, clipping or
+rounding. Only actual trailing EOS/pad tokens are removed, including mixed
+terminal sequences. Invalid outputs remain in the denominator with full-range
+error; validity and valid-only MAE are also reported. This penalty is distinct
+from ordinary numeric MAE whenever invalid outputs occur.
+
+Primary reports: per-prompt/source native MAE and equal-prompt/source NMAE.
+Original labels and per-example predictions remain available. WMT en-zh is the
+user-requested main WMT view; German results remain saved and the training pool
+stays identical to S3/S4. Do not reinterpret an en-zh-only result as the original
+three-source aggregate. This is not official WMT z_mean/Pearson leaderboard
+replication. No source selection or decoder choice based on these new test runs.
+
+## Reproducibility, command and recovery
+
+Project/cwd: `/vepfs-mlp2/c20250513/241404044/users/roytian/DeciForm`.
+Python: `../anaconda3/envs/qwen35-train/bin/python` (qwen35-train).
+Base: `../RSI_Research/external/baseline_models/qwen35_9b_base`.
+Data: `data/score_specialist_asap_fold0_20261104_v1` and
+`data/score_specialist_continuous_20261104_v1`.
+Separate baseline cache: `data/score_baseline_encodings_20261105_v1`;
+original datasets, original Kev caches and live-run source remain untouched.
+The cache audits freeze all exact row/cache paths, counts and SHA256 checksums.
+Root: `runs/formal_score_baselines_20261105_v1`.
+
+Preparation: `python scripts/formal/prepare_score_baselines.py`.
+Queue: `python -u scripts/formal/schedule_score_baselines.py --root
+runs/formal_score_baselines_20261105_v1`, tmux `deciform_score_baselines_20261105`.
+The queue owns GPU pairs 0–1 and 2–3; each must have a successful completed
+D2 size-curve dependency and less than 1000 MiB/card before reuse. GPU pairs
+are reserved while a supervisor is active, preventing two queued jobs racing
+for the same idle pair. Priority: ASAP Kev, ASAP JSON, continuous Kev, continuous
+JSON. The next pending arm takes the next available pair.
+
+Each supervisor verifies frozen config/source hashes, then runs zero-update
+GPU preflight, fresh training and automatic dev/test evaluation. It records
+status/progress, preflight/train logs, failures and 15-minute stale-progress
+alerts. Own optimizer/RNG checkpoints save every 25 updates. Resume command is
+in each runtime manifest, using `supervise_score_baselines.py --manifest
+<runtime_manifest.json> --resume`; do not restart an existing root scheduler.
+
+## Verification and trajectory
+
+Initial CPU preparation included unused ordinary scalar encodings. The user
+then cancelled that model; its draft threshold bank was removed before any
+GPU execution. No ordinary baseline checkpoint, config or training was created.
+
+52 focused tests passed: strict native/continuous JSON targets and parsing,
+malformed-output denominators, actual terminal-token stripping, unchanged
+probability metric replay, native CE value/gradient equivalence at K=4–101,
+continuous-label interpolation, and existing ASAP/specialist contracts.
+Real-tokenizer cache parity and complete-label JSON roundtrips are recorded in
+`data/score_baseline_encodings_20261105_v1/baseline_preflight_cpu.json`.
+
+Status at source freeze: implementation and CPU tests complete; GPU preflight
+and first updates will be recorded below. Local scoped source commit plus
+per-run source snapshot; no remote backup/push requested.
