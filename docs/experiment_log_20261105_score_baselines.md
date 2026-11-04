@@ -102,3 +102,10 @@ Real-tokenizer cache parity and complete-label JSON roundtrips are recorded in
 Status at source freeze: implementation and CPU tests complete; GPU preflight
 and first updates will be recorded below. Local scoped source commit plus
 per-run source snapshot; no remote backup/push requested.
+
+### 2026-11-05T01:54:27.202390+08:00 — two real training launches verified
+
+- Source commit `3c8d9d4`; all frozen source/config hashes verified. 52 tests, 78 real-tokenizer cache comparisons, and 31,311 exact original-label JSON roundtrips passed.
+- ASAP Kev on GPUs 0–1 and ASAP JSON-generative LoRA on GPUs 2–3 both passed zero-update GPU preflight and reached update 1/122 with finite loss/gradients. Preflight peaks: 47.9201 / 49.3597 GiB. Initial LoRA and Kev pointer hashes match the original formal baselines, with no inherited trained weights.
+- Both existing D2 size-curve dependencies completed successfully before allocation. Continuous Kev and continuous JSON remain queued for the next released pairs. Automatic full-native/full-range dev/test evaluation is part of each worker.
+- No failures or alerts at verification. Main independent D2 on 4–7 continues. Current launch evidence is `runs/formal_score_baselines_20261105_v1/launch_verified.json`; use live status/progress for later updates. No remote backup/push.
