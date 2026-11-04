@@ -56,3 +56,14 @@ Kev 旧 config 中的 continuation 字段是遗留元数据；对应 worker_next
 ### 2026-11-04 22:24 Asia/Shanghai — 准备
 
 完成冻结子集、既有 Kev 完成记录与 fresh 初始化检查。50 项子集契约/原始 D2 loss 测试通过；编译检查通过。准备三个隔离配置和自动队列，尚无新模型结果。未请求远程备份。
+
+### 2026-11-04 22:33 Asia/Shanghai — 启动已验证
+
+- 代码提交 `a6139ce`；两个 tmux 队列于 22:30 启动。
+- `deciform_d2_curves_g01_20261104`：25k 已通过 preflight，观察到正式训练 1/391；50k 等待其训练及评测成功后启动。
+- `deciform_d2_curves_g23_20261104`：100k 已通过 preflight，观察到正式训练 1/1563。
+- 两臂预检峰值均约 54.81 GiB、优化器更新数 0；base/LoRA/pointer/完整 head 初始化 hash 与 D2 相同。正式训练重新加载 fresh base，没有继承训练 checkpoint。
+- BGE 8081–8084 服务已按精确 PID 正常 SIGTERM，GPU0–3 显存释放后启动新队列；重启参数仅保存于运行目录的 0600 私有记录，不公开凭据。GPU4–7 的 ASAP S1/S2 正常运行。
+- Kev 25k/50k/100k/200k 和 D2 200k 的保存概率已按同一个协议重放；全任务行 ID、标签和候选支持完全匹配，开发集和测试集报告位于 `reference_score_rules/`。
+- 启动证据：`launch.json`、`launch_verified.json`、逐臂 `preflight_passed.json` / `initialization.json` / `progress.json`。尚无新模型评测结果；初始单步耗时不作为稳定 ETA。
+- 下一步由队列自动完成三个训练与完整候选评测。恢复时使用同臂 `--resume`；代码/config/hash 在运行期间冻结。
