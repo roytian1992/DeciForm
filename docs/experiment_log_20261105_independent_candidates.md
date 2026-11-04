@@ -95,3 +95,12 @@ Status at code preparation: implementation/CPU tests complete; actual 9B GPU
 zero-update preflight pending. No quality or speed improvement is claimed.
 Local scoped source commit and per-run source snapshot are prepared; no remote
 backup/push requested. Subsequent entries below record actual launch evidence.
+
+### 2026-11-05T00:39:27.419384+08:00 — training launch verified
+
+- tmux `deciform_independent_20261105` on GPUs 4–7 reached update 30/3125, 1920 training visits; finite loss/gradients, no failures or stale alerts.
+- All source/config hashes match the frozen manifest. Initial base, LoRA, complete head and pointer hashes match D2 fresh initialization; inherited adapter/head are null.
+- Real 9B preflight passed with zero optimizer updates, 62.8484 GiB maximum allocated memory, complete longest training requests and native evaluation panels. Native Choice K=3/77 and Noul K=2 reversals had exactly zero probability difference and unchanged decisions. GPU shared-vs-repeated-prefix hidden-state relative RMSE was 0.01308 under bf16/FLA; exact CPU output/gradient tests passed.
+- Whole-epoch packing audit: 27,515 rank-local microbatches; maximum actual prefix/branch padded slots 9,102 versus dense preflight 8,832. Full tokens retained. See `packing_audit.json`.
+- Early measured step time: 6.838 s; early remaining training estimate 5.88 h, excluding automatic dev/test and reversal audit. This is an early estimate, not a speed-improvement result.
+- Source commit `2c1f3a7`; launch evidence `runs/formal_independent_20261105_v1/launch_verified.json`. GPUs 0–3 size curves continue unchanged. No remote backup/push.
