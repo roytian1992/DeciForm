@@ -183,3 +183,43 @@ decoder changes improve some point metrics without changing weights. A4
 remains the lowest median MAE among these references; no improvement from the
 new training can yet be claimed. Neither training config was changed after
 this alternative test replay.
+
+### 10:07 Asia/Shanghai — both runs and internal evaluations complete
+
+D1/D2 completed at 09:45:23/09:46:05 respectively, with supervisor exit code
+0. Each completed 3,125 updates and 200,000 visits; training took
+15,213.8353/15,249.3162 seconds, evaluation 228.6550/229.0949 seconds.
+Each evaluated all 6,000 dev and 15,000 in-domain test rows, with original
+full candidates and validity 1.0 for every task. Each task contributes
+2,000 dev and 5,000 test rows. GPU training allocations have been released.
+
+Test results under the frozen median-primary protocol:
+
+| Model | Choice accuracy | Noul accuracy | Score median MAE |
+|---|---:|---:|---:|
+| A4 | 0.7262 | 0.8916 | 0.4148 |
+| Kev | 0.7248 | 0.8874 | 0.4256 |
+| D1 predictive-mean regression | 0.7218 | 0.8898 | 0.4182 |
+| D2 ordinal main objective | 0.7252 | 0.8884 | 0.4180 |
+
+Score test MAE by fixed decoding rule:
+
+| Model | Argmax | Median | Continuous mean | Nearest-native mean |
+|---|---:|---:|---:|---:|
+| A4 | 0.4296 | 0.4148 | 0.4801932 | 0.4246 |
+| D1 | 0.4310 | 0.4182 | 0.4789892 | 0.4236 |
+| D2 | 0.4278 | 0.4180 | 0.4795186 | 0.4258 |
+
+Neither treatment beats A4 on the predefined median-primary test metric or
+choice/noul accuracy. There are small improvements on particular diagnostic
+rules: D2 on argmax, both on continuous mean, D1 on nearest-native mean.
+These do not establish an overall improvement or justify changing the
+predefined primary decoder after seeing test results. D2 dev median MAE
+is 0.4130 versus A4 0.4150, but this does not carry over to test.
+Single-seed and two-versus-four-GPU comparison caveats still apply.
+
+Sources: each arm's `complete.json`, `status.json`, and
+`evaluations/epoch_1.{dev,test_in_domain}{,.score_rules}.json`, plus
+`reference_score_rules/{dev,test_in_domain}.json`. Exact source SHA256 and
+consolidated metrics are in root `results_summary.json`. No extra training
+or external evaluation was queued; no backup requested.
