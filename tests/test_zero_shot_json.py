@@ -109,6 +109,15 @@ def test_chat_mode_explicitly_disables_reasoning_without_changing_user_body():
     class Chat:
         def apply_chat_template(self, messages, **kwargs):
             assert messages == [{'role': 'user', 'content': json_prompt(noul())}]
-            assert kwargs == {'tokenize': True, 'add_generation_prompt': True, 'enable_thinking': False}
+            assert kwargs == {'tokenize': True, 'add_generation_prompt': True,
+                              'enable_thinking': False, 'return_dict': False}
             return [7, 8]
     assert prompt_ids(noul(), 'main', 'original', Chat(), 'official_chat') == [7, 8]
+
+
+def test_chat_mapping_cannot_be_mistaken_for_two_input_tokens():
+    class Chat:
+        def apply_chat_template(self, messages, **kwargs):
+            return {'input_ids': [7, 8], 'attention_mask': [1, 1]}
+    with pytest.raises(TypeError, match='flat token-ID list'):
+        prompt_ids(noul(), 'main', 'original', Chat(), 'official_chat')

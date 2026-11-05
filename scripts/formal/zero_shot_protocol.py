@@ -67,8 +67,14 @@ def prompt_ids(row, panel, view, tokenizer, mode):
     if mode == 'matched_base':
         return tokenizer(text, add_special_tokens=True, truncation=False).input_ids
     if mode == 'official_chat':
-        return tokenizer.apply_chat_template([{'role': 'user', 'content': text}],
-            tokenize=True, add_generation_prompt=True, enable_thinking=False)
+        # Transformers 5 defaults to a BatchEncoding mapping. Our batching
+        # contract requires a flat token list, never the mapping's two keys.
+        ids = tokenizer.apply_chat_template([{'role': 'user', 'content': text}],
+            tokenize=True, add_generation_prompt=True, enable_thinking=False,
+            return_dict=False)
+        if not isinstance(ids, list) or not ids or any(type(i) is not int for i in ids):
+            raise TypeError('Chat template must return a nonempty flat token-ID list')
+        return ids
     raise ValueError(mode)
 
 

@@ -17,9 +17,12 @@ from zero_shot_protocol import PANELS, prompt_ids, views_for
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--models', nargs='+', choices=['base', 'instruct'], default=['base'])
+    parser.add_argument('--models', nargs='+', choices=['base', 'instruct'], default=['instruct'])
+    parser.add_argument('--root', type=Path,
+                        default=PROJECT / 'runs/formal_zero_shot_instruct_20261105_v3')
+    parser.add_argument('--tmux-session', default='deciform_zero_shot_instruct_20261105')
     args = parser.parse_args()
-    root = PROJECT / 'runs/formal_zero_shot_json_20261105_v1'
+    root = args.root.resolve()
     if root.exists(): raise FileExistsError(root)
     main_audit = PROJECT / 'data/formal_200k_20261101_v1/cache/audit.json'
     score_audits = {p: PROJECT / f'data/score_baseline_encodings_20261105_v1/{p}/audit.json'
@@ -82,10 +85,17 @@ def main():
             lengths = []
             for i in ids:
                 encoded = prompt_ids(rows[i], panel, 'original', tok, spec['prompt_mode'])
+                assert isinstance(encoded, list) and all(type(t) is int for t in encoded)
                 if name == 'base': assert encoded == cache[i]['prompt'], (panel, rows[i]['id'])
+                else:
+                    text = tok.decode(encoded, skip_special_tokens=False)
+                    assert text.startswith('<|im_start|>user\n')
+                    assert text.endswith('<|im_start|>assistant\n<think>\n\n</think>\n\n')
                 lengths.append(len(encoded))
             checks[panel] = {'examples': len(ids), 'max_checked_input_tokens': max(lengths),
-                             'exact_prompt_token_parity_with_trained_baseline': name == 'base'}
+                             'exact_prompt_token_parity_with_trained_baseline': name == 'base',
+                             'official_chat_template_verified': name == 'instruct',
+                             'enable_thinking': False if name == 'instruct' else None}
         models[name] = spec
         tokenizer_checks[name] = checks
     root.mkdir(exist_ok=False)
@@ -124,7 +134,7 @@ def main():
         'expected_predictions_per_model': sum(d['predictions'] for d in panels.values()),
         'automatic_model_selection': False, 'external_panel': 'deferred',
         'launch_command': [sys.executable, str(PROJECT / 'scripts/formal/schedule_zero_shot_json.py'), '--root', str(root)],
-        'tmux_session': 'deciform_zero_shot_json_20261105'}
+        'tmux_session': args.tmux_session}
     atomic(root / 'tokenizer_validation.json', tokenizer_checks)
     atomic(root / 'experiment_manifest.json', manifest)
     print(json.dumps({'root': str(root), 'models': list(models),

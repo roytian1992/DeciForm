@@ -47,6 +47,8 @@ def reports(root, manifest):
 
 
 def run(root):
+    if (root / 'cancellation.json').exists():
+        raise RuntimeError('This queue was explicitly cancelled; use its documented replacement')
     lock = (root / 'scheduler.lock').open('a')
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     manifest = json.loads((root / 'experiment_manifest.json').read_text())
