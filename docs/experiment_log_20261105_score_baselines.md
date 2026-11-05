@@ -109,3 +109,13 @@ per-run source snapshot; no remote backup/push requested.
 - ASAP Kev on GPUs 0–1 and ASAP JSON-generative LoRA on GPUs 2–3 both passed zero-update GPU preflight and reached update 1/122 with finite loss/gradients. Preflight peaks: 47.9201 / 49.3597 GiB. Initial LoRA and Kev pointer hashes match the original formal baselines, with no inherited trained weights.
 - Both existing D2 size-curve dependencies completed successfully before allocation. Continuous Kev and continuous JSON remain queued for the next released pairs. Automatic full-native/full-range dev/test evaluation is part of each worker.
 - No failures or alerts at verification. Main independent D2 on 4–7 continues. Current launch evidence is `runs/formal_score_baselines_20261105_v1/launch_verified.json`; use live status/progress for later updates. No remote backup/push.
+
+### 2026-11-05T08:09:58.078664+08:00 — all four baseline arms complete
+
+- Scheduler status `runs/formal_score_baselines_20261105_v1/status.json` is complete; all four arms exited 0, with no failure or alert files. GPU pairs 0–3 are released.
+- ASAP test (2,598 rows): Kev native median MAE/NMAE `1.05427/0.110759`, JSON-generative MAE/NMAE `0.80062/0.087341`; both validity 1.0.
+- Continuous test (3,379 rows): Kev native median MAE/NMAE `7.20263/0.124375`, JSON-generative numeric MAE/NMAE `7.64234/0.113773`; both validity 1.0.
+- Existing matched specialist references remain S1/S2 ASAP NMAE `0.109069/0.105900` and S3/S4 continuous NMAE `0.108133/0.101199`; generated JSON has a distinct scalar interface and no probability metrics, so comparisons are reported with that caveat.
+- 4–7 independent candidate D2 is also complete: 3,125/3,125 updates, 200,000 visits, test Choice accuracy `0.7302`, Noul accuracy `0.8880`, Score median MAE `0.4168`; source `runs/formal_independent_20261105_v1/complete.json` and test evaluation.
+- D2 100k size curve completed full-native evaluation: test Choice `0.7126`, Noul `0.8802`, Score MAE `0.4450`; source `runs/formal_d2_curves_20261104_v1/d2_100k/evaluations/epoch_1.test_in_domain.json`.
+- These are endpoint results from one seed/one epoch, not cross-seed significance. External evaluation remains deferred. No remote backup/push.
