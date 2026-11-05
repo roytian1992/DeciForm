@@ -204,3 +204,49 @@ CUDA-backward failure before launch. Both new Score arms passed distributed
 fresh-initialization checks and reached real training updates. Main full and
 A1–A3 remain frozen. Next: collect complete evaluations, compare the matched
 Score pair and complete the queued learning-curve points.
+
+
+### 2026-11-05 22:45 Asia/Shanghai — first Score completion and native ASAP continuation
+
+`numeric_cdf` completed all 128 updates / 8,129 unique training visits and
+full 2,500 dev + 2,379 test evaluation, exit code 0. `complete.json` records
+209.9105 seconds training and 39.8679 seconds evaluation. Test primary MAE:
+STS-B 0.533332 (1,379 rows), en-zh 10.050000 (1,000 rows), equal-source NMAE
+0.103583. Source: `numeric_cdf/evaluations/epoch_1.test_in_domain.json`.
+The matched D2 reference is still training; these numbers do not yet establish
+an accuracy improvement. Do not replace median with the post-hoc better pooled
+mean diagnostic. Both fixed decoders remain in the output report.
+
+GPUs 6–7 next run the **same frozen numeric module** on native ASAP fold 0,
+under `runs/formal_score_numeric_asap_20261105_v1`. This extends the already
+planned Score research to 4/5/6/11/31/61 legal levels; it is not a response-time
+hyperparameter search. Same original 7,784 train / 2,593 dev / 2,598 test rows,
+1 epoch / 122 steps / batch 64 / fresh base / median rule. No weights inherited
+from the completed continuous model. Full original essays/rubrics and integer
+labels are retained. Soft-CDF and original ordinal-main losses and their
+logit gradients agree on all 127 possible native prompt/label cases.
+
+The ASAP maximum full encoding is 6,774 train / 6,826 dev / 6,670 test tokens;
+query-prefix maxima are 6,418 / 6,470 / 6,314. Unlike the short continuous
+panel, these are long essays plus rubrics. An initial zero-update probe trying
+four longest essays together exhausted memory (log retained under
+`runs/score_execution_preflight_20261105_numeric_asap.log`). The corrected
+execution uses a padded-token budget of 8,192 and at most four rows per
+microbatch; long essays run alone. This is batching, not text truncation.
+CUDA backward on complete longest essays then used 46.07 GiB; the fixed mixed
+batch peaked at 52.74 GiB, with every native support tested. Evidence:
+`runs/score_execution_preflight_20261105_v1/numeric_asap_budget8192_half/complete.json`.
+
+Native worker: `scripts/formal/worker_numeric_asap.py`; preparation and probe:
+`prepare_numeric_asap.py` and `benchmark_numeric_asap.py`. It reuses the
+unchanged `NumericD2` module and the same supervisor with full code/config/data
+hash checks. Native predictions flow through ASAP-specific MAE/NMAE/QWK
+reporting, including all eight prompts. The existing historical independent
+ASAP D2 reference used all-layer checkpointing and chunked execution; compare
+quality cautiously and state this execution difference when discussing speed.
+The main D2 and A1–A3 are still untouched; no German work is queued.
+
+Local implementation commit: `8520128` (no remote push). The first signing
+attempt failed because GPG signing was unavailable; a local unsigned commit
+was made without changing persistent Git settings. The existing unrelated
+working-tree changes were not committed.
