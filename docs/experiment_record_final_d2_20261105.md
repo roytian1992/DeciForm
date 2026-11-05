@@ -43,10 +43,10 @@
 
 令状态和问题前缀为 (P)，候选为 (c_i)。新版编码为
 
-\[
+$$
 q=F_\theta(P,\texttt{decide}),\qquad
 h_i=F_\theta(P,\texttt{opt}\ c_i\ \texttt{/opt}).
-\]
+$$
 
 每个候选分支从相同的前缀 attention KV、DeltaNet 状态和实际前缀位置开始；前缀只计算一次，分支梯度仍回传到前缀。候选隐藏状态按语义 ID 排序后交给 D2 head。评测时使用整组原生候选，softmax 或 ordinal readout 的归一化支持集就是该题目的完整候选集。
 
