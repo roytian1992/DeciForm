@@ -41,3 +41,11 @@ checkpoint, and automatic native dev/test evaluation. A successful arm must
 report 3,125 optimizer steps, 200,000 sample visits, and both `dev` and
 `test_in_domain` evaluated with complete native candidates. The position audit
 must report all seven orders over the full 10,000 Choice/Noul test rows.
+
+## Position audit result
+
+The position audit completed successfully on 2026-11-05. Across all seven
+orders and all 10,000 native Choice/Noul rows, the final D2 produced zero
+decision flips and zero maximum probability delta. Choice accuracy remained
+0.7312 and Noul accuracy remained 0.8878 for every order. The detailed report
+is `runs/formal_independent_position_20261105_v1/position_sensitivity.json`.
