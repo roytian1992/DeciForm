@@ -19,7 +19,7 @@ The completed CE/BCE pilot is the matched reference. Earlier task-specific RLCD 
 With p=softmax(z), observed label y and current candidate count K:
 
 $$
-L_{proper}=rac{-log p_y+0.75sqrt K(1-p_y/|p|_2)}{1.75}.
+L_{proper}=\frac{-\log p_y+0.75\sqrt K(1-p_y/\|p\|_2)}{1.75}.
 $$
 
 The log and spherical mixture is strictly proper for the conditional categorical distribution. At uniform predictions its logit gradient equals CE for every K. This does not establish calibration on full candidates after sampled-candidate training. Stable log-softmax/logsumexp/expm1 computation; train loss FP32. No probability floor, extra backbone pass, extra parameter or changed candidate interface.
