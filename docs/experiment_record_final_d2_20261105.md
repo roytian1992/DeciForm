@@ -1,6 +1,6 @@
 # 新版 D2 全部相关实验记录
 
-更新时间：2026-11-06 03:20（Asia/Shanghai）
+更新时间：2026-11-06 10:05（Asia/Shanghai）
 
 本文档只展示当前有效结果：同一模型、同一实验口径仅保留一条结果，重跑完成后覆盖对应单元格；未完成明确写 Placeholder。历史快照、被替代结果和过程轨迹留在原始 runs 与执行日志，不在本文重复展示。主实验与 Score 专项使用不同模型和训练数据，分别列出。
 
@@ -190,16 +190,16 @@ D2 来源：`runs/formal_independent_curves_20261105_v1` 和正式 200k 主运�
 
 | 模型 | Test MAE ↓ | 八题等权 NMAE ↓ | 状态 |
 |---|---:|---:|---|
-| JSON 生成式 LoRA | 0.800616 | 0.087341 | 当前有效结果；独立重跑中，完成后覆盖 |
+| JSON 生成式 LoRA | 0.803695 | 0.086374 | 已完成 |
 | Kev | 1.054273 | 0.110759 | 已完成 |
 | 独立候选 D2 | 0.981524 | 0.103547 | 已完成 |
 | 独立候选 CE 对照 | 1.029253 | 0.114263 | 已完成 |
 | 数值 CDF | 0.954196 | 0.100579 | 已完成 |
 | R1 CDF＋均值回归 | 0.911855 | 0.100677 | 已完成 |
 | R2 纯 CRPS | 0.931486 | 0.102575 | 已完成 |
-| E1 查询条件证据汇聚＋CDF | Placeholder | Placeholder | 训练中 |
-| E2 中位数回归＋Laplace 有序分布 | Placeholder | Placeholder | 训练中 |
-| E3 证据汇聚＋中位数分布 | Placeholder | Placeholder | 训练中 |
+| E1 查询条件证据汇聚＋CDF | 0.980370 | 0.102086 | 已完成 |
+| E2 中位数回归＋Laplace 有序分布 | 0.910316 | 0.099332 | 已完成 |
+| E3 证据汇聚＋中位数分布 | 0.890685 | 0.097932 | 已完成 |
 | 官方指令 LLM，零任务微调 | 2.101232 | 0.241090 | 已完成 |
 
 MAE 使用各题原生分数；NMAE 先按各题合法分数跨度归一化，再对八题等权平均。两者均保留，不能只挑有利的一项。
@@ -224,7 +224,7 @@ MAE 使用各题原生分数；NMAE 先按各题合法分数跨度归一化，�
 
 以下运行的有效指标均取 `evaluations/epoch_1.test_in_domain.json`，并检查完成标记；被重跑替代的成绩不再列入表。
 
-- JSON 生成式 LoRA（ASAP）：`runs/formal_score_baselines_20261105_v1/asap_json_sft`
+- JSON 生成式 LoRA（ASAP）：`runs/formal_score_recheck_20261106_v1/asap_json_replay`
 - Kev（ASAP）：`runs/formal_score_baselines_20261105_v1/asap_kev`
 - 独立候选 D2（ASAP）：`runs/formal_independent_asap_score_20261105_v5/independent_d2_asap`
 - 独立候选 CE 对照（ASAP）：`runs/formal_independent_score_completion_20261105_v1/asap_ce`
