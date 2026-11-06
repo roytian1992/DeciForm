@@ -48,8 +48,8 @@ negative results, is reported. Single seed and two layouts do not establish
 cross-seed stability. Module migration is a hypothesis, not a guaranteed gain.
 No formal-model changes or new training data. No text or candidate truncation.
 
-Status: implemented modules, validation/worker integration underway. Exact
-commands, source/config hashes and run directories will be frozen before launch.
+Status: both v2 arms completed training, full evaluation and position tests.
+Exact commands and source/config hashes are frozen in the manifests below.
 
 ## Mathematical parameterization
 
@@ -154,3 +154,19 @@ remains, excluding checkpoint I/O and automatic evaluation. This is an early
 estimate, slower than the original Laya ~1.5 seconds/step. Frozen source hashes
 were rechecked. training_started_verified.json stores observed progress.
 Master record section13 and both tmux supervisors/report watcher are active.
+
+### 2026-11-06 — completed results and migration audit
+
+Both arms exited successfully. Parallel transfer Choice/Noul improved from
+0.6918/0.8054 to 0.6960/0.8106, while Score median MAE worsened from 0.4992
+to 0.5046. Sequential Choice/Noul changed from 0.6848/0.8066 to 0.6758/0.8126,
+and Score MAE from 0.5024 to 0.5062. Neither transfer wins all three tasks.
+Training took 6101.915 seconds parallel and 6197.215 seconds sequential.
+Current original result paths remain in master section13 and results_summary.json.
+
+User subsequently authorized a migration correction after read-only Dev
+diagnostics. The new arm uses native scorer geometry and task-only encoder
+contrasts with dedicated module LR and structural regularization. It is a fresh
+parallel run, not a resumed version of these checkpoints. Evidence, math and
+limitations: [native-path transfer](experiment_log_20261106_laya_native_transfer.md).
+Preserve all previous negative results and immutable experiment artifacts.
