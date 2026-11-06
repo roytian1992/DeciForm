@@ -604,3 +604,35 @@ and all source/config manifests are frozen. Scripts update_final_record.py
 maintains LAYA_CURRENT separately. Full notes and commands are in
  docs/experiment_log_20261106_numeric_trie.md. Continue all-three native-MAE
 comparison when complete; no test-driven per-source mixture of winners.
+
+Latest user-authorized transfer (2026-11-06 13:54 Asia/Shanghai): implement the
+A1–A3 core mechanisms on Laya and train matched same-layout comparisons.
+Current root runs/formal_laya_mechanisms_20261106_v2, sequential on 4--5 and
+parallel on 6--7. Baselines are completed original Laya same-layout arms in
+runs/formal_laya_20261106_v1. The transfer retains full ModernBERT fine-tuning,
+original 200k frozen views, original encoder/head initial weights, one epoch,
+batch64/3125 steps, original RLCD loss, optimizer/schedule and native evaluation.
+Do not inherit trained Laya/D2/static-full or switch baseline to frozen LoRA.
+Added: rank16/alpha32 task-routed B(I+R_t)A residuals on 112 encoder projections;
+centered bounded head geometry and shared bilinear residual; Choice-only QF.
+Original scorer retained. All added branch outputs start at zero and all three
+tasks exactly reproduce baseline initial outputs. Added initialization preserves
+RNG; pretrained encoder and random head hashes match the original baselines.
+Total added parameters 8,085,568; original trainables remain trainable. Added
+parameters use existing head LR1e-4, original encoder remains2.5e-5. No new loss.
+This includes extra shared A/B and bilinear capacity, so a gain cannot isolate
+routing/geometry/QF individually. Candidate attention/layout remains original
+Laya; do not claim D2 candidate independence. All native K and text preserved.
+Fifteen CPU tests and actual two-GPU zero-update preflights passed, including
+initial prediction identity, all-component gradients, checkpoint replay and
+reloading, variable K and semantic permutation. Both real trainings reached
+step10+. Automatic complete dev6000/test15000 and seven-order Choice/Noul10000
+position audit follow. Tmux deciform_laya_mechanisms_v2_{sequential,parallel}_20261106
+and report watcher deciform_laya_mechanisms_v2_report_20261106. The reporter
+updates only LAYA_TRANSFER block, sharing the current-result document lock.
+Source/config hashes are frozen; do not edit active files. v1 failed in audit
+metadata handling with zero optimizer updates; v2 contains the corrected tensor
+filter and starts fresh. Preserve v1 failure provenance. Exact notes, commands,
+metrics and limitations: docs/experiment_log_20261106_laya_mechanisms.md.
+The previous numeric-trie auxiliary Score study v4 has completed all four arms;
+its results are separate and retained. No new Score follow-up is running here.
