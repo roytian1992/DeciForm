@@ -46,3 +46,8 @@
 ## 检验与轨迹
 - 2026-11-06：12项CPU测试通过，覆盖与原5档Laya模板完全一致、两布局编码、4至101完整支持、超过8192token不裁剪、连续标签保期望/不泄漏到输入、原生RLCD软标签反向有限。证据tests.log。
 - 数据准备完成，四组初始化/训练配置均parent_checkpoint=null；两条GPU队列已启动preflight。实际训练启动以progress.json和launch_verified.json为准。
+
+### 2026-11-06T15:38:28.047521+08:00 — 真实训练启动确认
+- 两组ASAP零更新GPU预检通过，原生最长全文/最大K反向和完整dev/test前向通过，峰值约6.29GiB。两组已到10步以上；实际训练峰值约9.56GiB。
+- encoder与随机head初始SHA与原20万条实验的“训练前初始状态”一致，未读取其训练后checkpoint。证据launch_verified.json；代码commit432f992。
+- 两条队列会在各自ASAP训练和完整评测成功后，从原始backbone独立启动连续专项。主MD的LAYA_SCORE区块已加入placeholder并由队列自动更新。
