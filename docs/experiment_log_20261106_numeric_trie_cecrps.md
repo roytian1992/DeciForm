@@ -70,3 +70,17 @@ numeric_trie/consistency/pilot/R1/CECRPS共56项CPU测试通过，涵盖能量�
 - continuous_cecrps，GPU 6,7，实际优化器step 35/128，finite loss=1.9874557256698608；GPU前置检查峰值20.33GiB。
 
 下一步：现有持久队列自动完成训练和原生Dev/Test，reporter覆盖本实验区块。尚无本次结果，不提前宣布优于CE/CDF或换默认。曾有两次工具封装语法错误，均在shell执行前失败，已通过独立重发修复；训练本身无失败。
+
+## Completed comparison decision — 2026-11-06
+
+两组训练、Dev和Test全部完成，exit0；完整步数/样本数、原生档位和median解码、报告来源哈希均核验。主记录本实验区块已覆盖为唯一完成结果，无Placeholder。
+
+| 测试集 | 前缀CE/CDF MAE | 前缀CE/CRPS MAE |
+|---|---:|---:|
+| ASAP128 | 1.2265625 | 1.2187500 |
+| STS-B256 | 0.47136328125 | 0.47644140625 |
+| WMT英中256 | 11.83072900027 | 11.72265609354 |
+
+ASAP八题等权测试NMAE 0.15427696→0.15773250，Dev 0.119375→0.13663194；pooled MAE小改善不代表跨题改善。连续源等权测试NMAE 0.10628997→0.10625742，配对区间跨0，接近持平。没有跨三个来源的稳定收益，默认仍推荐前缀CE/CDF，不默认加R1/序列监督。本次不追加新训练。单seed小样本探索，不作普遍优劣结论。
+
+实测训练/评测：ASAP286.891s/23.479s，连续123.367s/10.686s，不含加载和preflight。来源：本run的results_summary.json、report.md、各complete.json及evaluations/epoch_1.{dev,test_in_domain}.json。
