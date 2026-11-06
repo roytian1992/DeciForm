@@ -122,3 +122,11 @@ real optimizer-step progress is checked separately before reporting training
 as established. Both continuous queues still wait on Laya completion.
 The master record was overwritten with N1/N2 complete results and T1/T2
 placeholders. No remote backup was requested or made.
+
+### 2026-11-06 12:45 Asia/Shanghai — real training confirmed
+
+Both ASAP arms completed optimizer step 1/122 on 0–1 and 2–3. T1/T2 losses
+are 2.681000/2.358834; gradients are finite; first-step durations 30.32/30.13
+seconds. The training-start proof is in training_started_verified.json under
+the v4 root. All frozen source hashes still match. Continuous arms remain
+queued behind Laya. Automatic full dev/test and document updates remain active.
