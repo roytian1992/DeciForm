@@ -573,3 +573,34 @@ separate LAYA_CURRENT block of the unified record. See
 prospective D2-to-ModernBERT / Laya-to-Qwen transfer reasoning. Those transfer
 models have not been implemented or launched; frozen main D2 and RQ-Score stay
 separate.
+
+Latest Score RQ execution (2026-11-06 12:44 Asia/Shanghai): first numeric-trie
+N1/N2 study completed all three native Score tests under
+runs/formal_numeric_trie_20261106_v1. N1 MAE ASAP/STSB/WMT is
+.8233256351/.4343966642/11.3653333187; N2 is
+.8298691301/.4337440174/11.1299999905. Fresh generative replay is
+.8036951501/.4504865845/15.5553333340. Both trie methods improve the continuous
+sources but fail ASAP native MAE, despite better ASAP macro NMAE. Do not call
+this a three-source win or cross-seed stability.
+Current follow-up is runs/formal_numeric_trie_consistency_20261106_v4:
+ASAP T1 (CE + .5 exact-decimal token NLL) on 0--1; ASAP T2
+(.5 CE + .5 CDF-log + .5 token NLL) on 2--3. Both passed actual two-GPU
+zero-update preflight including longest backward, dense/first global batches,
+full-native inference and gold/counterfactual suffix independence (observed
+probability difference 0). Peak 54.404 GiB. CPU tests: 23 passed. Distribution
+and token supervision share ONE causal backbone forward; the distribution
+reads before the first answer digit, and evaluation reads prompt only.
+Same seed, one epoch, batch64, full text/support, fresh Base and no inherited
+head/adapter. No main D2 or A1--A3 changes. Each arm auto-evaluates dev/test.
+Continuous T1/T2 are QUEUED on 4--5/6--7 AFTER Laya's complete training AND
+quality/position evaluation, with explicit status dependencies. Do not stop
+Laya or confuse a between-phase idle GPU with completed work. All four queues
+are in tmux deciform_numeric_trie_consistency_v4_g{01,23,45,67}_20261106.
+Failed follow-ups v1/v2/v3 had zero optimizer updates (constructor, double-graph
+OOM, and audit-only routing-state errors respectively); preserve their logs,
+use v4 as the current execution, and never resume failed versions. Worker code
+and all source/config manifests are frozen. Scripts update_final_record.py
+--watch maintains CURRENT_RESULTS block in the master document; Laya reporter
+maintains LAYA_CURRENT separately. Full notes and commands are in
+ docs/experiment_log_20261106_numeric_trie.md. Continue all-three native-MAE
+comparison when complete; no test-driven per-source mixture of winners.
