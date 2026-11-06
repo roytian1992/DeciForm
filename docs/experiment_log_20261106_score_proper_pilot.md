@@ -53,3 +53,5 @@ Automatic results_summary.json/report.md updates compare only matched small popu
 - User clarification arrived before any training launch; full-data plan replaced with this matched small pilot.
 -38 CPU checks passed in10.79s: original one-hot loss parity, soft-target expectation, analytical/autograd gradients, proper regret identity, finite extreme logits, RNG preservation, single forward, baseline CDF parity and deterministic stratification.
 - No remote backup or push requested. Actual launch/preflight/update proofs will be saved in launch_verified.json.
+
+Preparation audit correction: inherited continuous source Dev/Test share215 groups, while train-vs-evaluation share0. The first small draw had10 Dev/Test group overlaps and was rejected before training. Preparation artifacts are retained under a prepare_group_overlap timestamp. New dev draws exclude all original test groups; test sampling and original source files stay unchanged. Eligible/excluded counts are recorded per split. This affects both loss arms identically.

@@ -59,12 +59,19 @@ def prepare_data(panel,cfg):
     manifest={'panel':panel,'seed':SEED,'source_data':str(source),'source_audit_sha256':sha(audit_path),
       'selection':'deterministic source/label-stratified ID hash; equal continuous source quotas, proportional ASAP prompts',
       'candidates':'complete native supports in ALL splits','modified_text':0,'modified_labels':0,'truncated_rows':0,'splits':{}}
+    # Keep test sampling unchanged. Select small dev only from groups absent
+    # from the entire original test, so repeated sentences cannot cross panels.
+    test_desc=audit['splits']['test_in_domain']
+    assert sha(test_desc['views_path'])==test_desc['views_sha256']
+    heldout_groups={json.loads(line)['group_id'] for line in open(test_desc['views_path'])}
     splits={};ids_by_split={};groups_by_split={}
     for split,size in COUNTS[panel].items():
         d=audit['splits'][split];entry=d['arms']['kev']
         assert sha(d['views_path'])==d['views_sha256'] and sha(entry['path'])==entry['sha256']
         rows=[json.loads(line) for line in open(d['views_path'])]
-        selected=stratified(rows,size,split,panel);rs=[rows[i] for i in selected]
+        eligible=[i for i,r in enumerate(rows) if split!='dev' or r['group_id'] not in heldout_groups]
+        local=stratified([rows[i] for i in eligible],size,split,panel)
+        selected=sorted(eligible[i] for i in local);rs=[rows[i] for i in selected]
         with open(entry['path'],'rb') as f:allenc=pickle.load(f)
         assert len(rows)==len(allenc)==d['rows']
         enc=[allenc[i] for i in selected]
@@ -81,6 +88,7 @@ def prepare_data(panel,cfg):
            'max_json_response_tokens':d['max_json_response_tokens'],
            'arms':{'kev':{'path':str(cache),'sha256':sha(cache),'max_tokens':max(lengths)}}}
         manifest['splits'][split]={'rows':len(rs),'parent_rows':len(rows),'parent_views_sha256':d['views_sha256'],
+           'eligible_rows':len(eligible),'development_rows_excluded_for_test_group_overlap':len(rows)-len(eligible),
            'parent_cache_sha256':entry['sha256'],'indices_path':str(index),'indices_sha256':sha(index),
            'sources':dict(collections.Counter(r['source_family'] for r in rs)),
            'grid_sizes':dict(collections.Counter(len(r['score_support']) for r in rs)),
