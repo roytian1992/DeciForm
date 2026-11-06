@@ -61,3 +61,12 @@ numeric_trie/consistency/pilot/R1/CECRPS共56项CPU测试通过，涵盖能量�
 实际状态以preparation_verified.json、launch_verified.json、分支status/progress/complete.json和results_summary.json为准。结果Placeholder，不预先改变默认。本地提交与冻结，不进行远程备份。
 
 理论来源：Gneiting & Raftery (2007), Strictly Proper Scoring Rules, Prediction, and Estimation, JASA102(477), DOI10.1198/016214506000001437，§4.2 CRPS/能量形式；本实现采用最小化损失方向。
+
+## Trajectory — 2026-11-06T23:02:22.065780+08:00
+
+已提交代码81a8c2c，冻结168份源文件；56项CPU测试通过。GPU preflight两组通过，LoRA/pointer/head/base配置及可训练参数逐项与已完成对照一致；无新增参数。
+
+- asap_cecrps，GPU 0,1，实际优化器step 1/32，finite loss=1.532390832901001；GPU前置检查峰值20.56GiB。
+- continuous_cecrps，GPU 6,7，实际优化器step 35/128，finite loss=1.9874557256698608；GPU前置检查峰值20.33GiB。
+
+下一步：现有持久队列自动完成训练和原生Dev/Test，reporter覆盖本实验区块。尚无本次结果，不提前宣布优于CE/CDF或换默认。曾有两次工具封装语法错误，均在shell执行前失败，已通过独立重发修复；训练本身无失败。
