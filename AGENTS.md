@@ -549,3 +549,27 @@ superiority over all baselines from this single seed. The D2 100k curve also
 completed: .7240/.8770/.4400 Choice/Noul/Score-MAE. GPUs are released; no active
 training remains. The unified record was overwritten from completed reports by
 `scripts/formal/update_final_record.py`.
+
+Latest authorized baseline (2026-11-06): user requests Laya on the same 200k
+training records and full-native quality/position evaluation on GPUs 4--7.
+Active root `runs/formal_laya_20261106_v1`: sequential on 4--5, upstream parallel
+layout on 6--7. Both use pinned Laya 0.4.26, fresh original ModernBERT-large
+encoder (revision 45bb4654a4d5aaff24dd11d4781fa46d39bf8c13), random decision
+head, no released Laya/D2/Kev checkpoint inheritance. Same frozen training
+views/negative IDs, one epoch/global batch64/3125 updates; native upstream RLCD,
+encoder/head learning rates and cosine schedule. This is a cross-backbone
+same-supervision comparison, not a same-backbone module ablation. Preserve
+complete text and supports: 4/1/2 train/dev/test examples exceed the original
+8192-token pretraining length (maximum 9662), are processed fully with original
+RoPE frequencies, and passed actual longest-input GPU forward/backward checks.
+Both initial encoder/head hashes match. CPU protocol tests and both zero-update
+GPU preflights passed; real step120 and step100 resumable checkpoints verified.
+Tmux supervisors auto-run dev6000/test15000 and the final-D2 seven-order semantic
+audit on Choice/Noul10000; Score is excluded from flip rates and uses median MAE
+with all four decoder reports. Source/config manifests are frozen; do not edit
+active worker/vendor code. `scripts/formal/report_laya.py --watch` updates the
+separate LAYA_CURRENT block of the unified record. See
+`docs/experiment_log_20261106_laya.md` for exact paths/commands/recovery and
+prospective D2-to-ModernBERT / Laya-to-Qwen transfer reasoning. Those transfer
+models have not been implemented or launched; frozen main D2 and RQ-Score stay
+separate.

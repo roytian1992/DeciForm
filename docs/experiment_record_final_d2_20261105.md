@@ -257,3 +257,36 @@ MAE 使用各题原生分数；NMAE 先按各题合法分数跨度归一化，�
 ASAP新实验说明：`docs/experiment_log_20261106_asap_exploration.md`；生成式复核说明：`docs/experiment_log_20261106_score_recheck.md`。
 
 <!-- CURRENT_RESULTS_END -->
+
+<!-- LAYA_CURRENT_START -->
+
+## 12. Laya 跨骨干对照（同 20 万条）
+
+运行目录：`runs/formal_laya_20261106_v1/`；执行与迁移研究说明：
+[Laya 实验记录](experiment_log_20261106_laya.md)。
+
+两组都从原始 ModernBERT-large 预训练编码器和随机 Laya head 开始，
+复用原 200k 固定训练视图、1 epoch、global batch 64 和原生完整 dev/test。
+Laya 使用上游 RLCD、全参数编码器微调及原生余弦学习率；与 D2 是同监督量的跨骨干比较。
+
+| 模型 | Test Choice Acc ↑ | Test Noul Acc ↑ | Test Score median MAE ↓ | 状态 |
+|---|---:|---:|---:|---|
+| 新版 D2 | 0.7302 | 0.8880 | 0.4168 | 已完成 |
+| Laya sequential | Placeholder | Placeholder | Placeholder | train |
+| Laya parallel | Placeholder | Placeholder | Placeholder | train |
+
+位置审计严格复用新版 D2 的 Choice/Noul 10,000 条、七种顺序和语义 ID 对齐规则。
+Score 不加入分类改判率。
+
+| 模型 | Choice reverse flip | Choice any-order flip | Noul reverse flip | Noul any-order flip |
+|---|---:|---:|---:|---:|
+| Laya sequential | Placeholder | Placeholder | Placeholder | Placeholder |
+| Laya parallel | Placeholder | Placeholder | Placeholder | Placeholder |
+
+质量来源：各 arm 的 `evaluations/test_in_domain.original.json`；
+Score 的 median、mean、argmax 和 mean-nearest 同时保存在 `evaluations/test_in_domain.score_rules.json`。
+位置来源：各 arm 的 `position_sensitivity.json`。待完成单元格只在完整结果产生后覆盖。
+文本与候选均未硬截断；原始 8,192-token 范围外有 train/dev/test 各 4/1/2 条，
+最长 9,662 token，使用原 RoPE 频率完整计算，并已通过实际 GPU 前向/反向预检。
+
+<!-- LAYA_CURRENT_END -->
