@@ -55,3 +55,11 @@ Automatic results_summary.json/report.md updates compare only matched small popu
 - No remote backup or push requested. Actual launch/preflight/update proofs will be saved in launch_verified.json.
 
 Preparation audit correction: inherited continuous source Dev/Test share215 groups, while train-vs-evaluation share0. The first small draw had10 Dev/Test group overlaps and was rejected before training. Preparation artifacts are retained under a prepare_group_overlap timestamp. New dev draws exclude all original test groups; test sampling and original source files stay unchanged. Eligible/excluded counts are recorded per split. This affects both loss arms identically.
+
+### 2026-11-06 21:20 +0800 — parallel scheduling authorized
+
+User released GPUs0–1 and authorized their use. Verified both at4MiB before launch. New-objective lane now uses0–1: continuous_proper then asap_proper; original-CDF lane remains6–7: continuous_cdf then asap_cdf. Each run still has world_size2 and identical frozen config, data, seed and numerical execution. Only unused proper-arm manifests changed physical GPU assignments. Prior scheduling manifests are preserved under scheduling_before_01_release.
+
+The old dispatcher PID3737631 was SIGSTOPed without signaling its existing child supervisor/torchrun/workers. The new CDF lane adopts the ongoing control, then retires that stopped dispatcher after control completion. Thus no optimizer restart or discarded steps. New lane scheduler is scripts/formal/queue_score_proper_lanes.py, tracked by scheduler_sha256; active worker/source hashes remain unchanged. Persistent lane status/alerts and original per-arm supervision remain enabled. GPU2–5 workloads untouched.
+
+Independent data_verification.json checks every selected row and encoded request exactly equals its frozen source, and all small splits have zero cross-group overlap. First control passed real two-GPU preflight at52.365GiB and began optimizer updates; full proof in launch_verified.json. New proper arm preflight/training is being verified; no finished results claimed.
