@@ -21,7 +21,7 @@ Score 专项见第 9 节，Choice/Noul 位置变换见第 5 节；三部分均�
 - 运行目录：`runs/formal_independent_20261105_v1/`
 - 代码说明：`docs/experiment_log_20261105_independent_candidates.md`
 - 训练完成文件：`complete.json`、`epoch_1.pt`
-- 训练初始化：本地 Qwen3.5-9B base，fresh base only；不继承 static-full、旧 D2、Kev 或其他已训练 checkpoint
+- 训练初始化：本地 Qwen3.5-9B base，fresh base only；不继承 static-full、Kev 或其他已训练 checkpoint
 - 可训练参数：46,304,262
 - LoRA：rank 16、alpha 32、dropout 0.05，覆盖 Q/K/V/O、上下投影以及 DeltaNet 投影
 - task routing、task-conditioned head geometry、Choice quadratic readout、ordinal Score readout 全部启用
@@ -84,7 +84,7 @@ $$
 
 完整汇总：`runs/formal_independent_position_20261105_v1/position_sensitivity.json`。
 
-旧版和其它基线的历史位置敏感性只作参照：
+其它基线的位置敏感性只作参照：
 
 | 模型 | Native Choice reverse flip | Native Choice any-order flip | Native Noul reverse flip | 说明 |
 |---|---:|---:|---:|---|
@@ -130,7 +130,7 @@ Choice 两套顺序共享原序和倒序，实际共 10 个命名条件、50,000
 | A2 无 QF | 0.7640 | 0.8990 | 0.4135 | 0.7322 | 0.8892 | 0.4142 |
 | A3 无 head geometry | 0.7660 | 0.9010 | 0.4160 | 0.7332 | 0.8866 | 0.4172 |
 
-三组各评完 Dev 6,000、Test 15,000 条。另各完成 Choice 5,000 + Noul 5,000 条原序/倒序配对检查：均 0 翻转，最大概率变化 0。顺序检查与主评测采用不同 packing，主质量指标只使用上表的主评测文件。当前单 seed 结果**不支持三个组件均提升新版主指标**；A2 的 Test 三项点估计均优于 Full，不能沿用旧版消融收益结论。Full 为四卡训练、消融为两卡，数值/RNG 分区不同，不能把微小差异直接认定为模块的稳定因果收益。
+三组各评完 Dev 6,000、Test 15,000 条。另各完成 Choice 5,000 + Noul 5,000 条原序/倒序配对检查：均 0 翻转，最大概率变化 0。顺序检查与主评测采用不同 packing，主质量指标只使用上表的主评测文件。当前单 seed 结果不支持三个组件均提升新版主指标；A2 的 Test 三项点估计均优于 Full，不能把微小差异直接认定为模块的稳定因果收益。Full 为四卡训练、消融为两卡，存在数值和 RNG 分区差异。
 
 ## 7. 同一正式数据上的主要 baselines
 
@@ -173,7 +173,7 @@ Choice 两套顺序共享原序和倒序，实际共 10 个命名条件、50,000
 | 200,000 | Kev | 0.7248 | 0.8874 | 0.4256 | 已完成 |
 | 200,000 | 新版 D2 | 0.7302 | 0.8880 | 0.4168 | 已完成 |
 
-D2 来源：`runs/formal_independent_curves_20261105_v1` 和正式 200k 主运行；Kev 来源：`runs/formal_d2_curves_20261104_v1/reference_score_rules/test_in_domain.json` 的 Kev 条目，已经统一 median。旧 D2 曲线不再展示。
+D2 来源：`runs/formal_independent_curves_20261105_v1` 和正式 200k 主运行；Kev 当前数据量结果来源：`runs/formal_independent_curves_20261105_v1/kev_curve_current.json`，已经统一 median。该表只保留新版 D2 与 Kev 的当前数据量曲线。
 
 ## 9. 独立 RQ-Score：训练范围与当前结果
 

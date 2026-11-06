@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "model": "Kev",
+  "score_rule": "median",
+  "primary_metric": "native MAE",
+  "source_report": "/vepfs-mlp2/c20250513/241404044/users/roytian/DeciForm/runs/formal_d2_curves_20261104_v1/reference_score_rules/test_in_domain.json",
+  "source_sha256": "3e568735e1c788b5fc288bd18eb630036c2849df0a42066714216352f9d52840",
+  "rows": {
+    "Kev_25k": {
+      "choice_accuracy": 0.6832,
+      "noul_accuracy": 0.8608,
+      "score_mae": 0.5158,
+      "score_rule": "median"
+    },
+    "Kev_50k": {
+      "choice_accuracy": 0.7014,
+      "noul_accuracy": 0.872,
+      "score_mae": 0.4676,
+      "score_rule": "median"
+    },
+    "Kev_100k": {
+      "choice_accuracy": 0.709,
+      "noul_accuracy": 0.8792,
+      "score_mae": 0.4386,
+      "score_rule": "median"
+    },
+    "Kev_200k": {
+      "choice_accuracy": 0.7248,
+      "noul_accuracy": 0.8874,
+      "score_mae": 0.4256,
+      "score_rule": "median"
+    }
+  }
+}
