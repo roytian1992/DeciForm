@@ -19,7 +19,7 @@ Secondary rule, from the same logits: renormalize over valid next-token branches
 - Position: full Choice 5,000 across existing 10-order union; Noul 5,000 original/reversed. No Score flip-rate experiment.
 - New output root: runs/formal_zero_shot_logits_20261106_v2. Immutable manifests, raw scores/probabilities, durable journals, progress and failures.
 - Environment: qwen35-train; exact executable/packages/commands in manifest.
-- Status: implementation and preflight underway; no new result yet.
+- Status: running, four active GPU workers verified; completed aggregate metrics pending.
 
 ## Literature
 - Zhao et al., ICML 2021, Calibrate Before Use: Improving Few-Shot Performance of Language Models. https://proceedings.mlr.press/v139/zhao21c.html
@@ -43,3 +43,7 @@ Secondary rule, from the same logits: renormalize over valid next-token branches
 - Total 79,977 request/view evaluations; each produces two rule records, 159,954 journal lines. This includes repeated rows across permutation views; unique populations are the panel counts above.
 - Launch: qwen35-train Python scripts/formal/schedule_zero_shot_logits.py --root runs/formal_zero_shot_logits_20261106_v2, in tmux deciform_zero_shot_logits_20261106.
 - Resume the same command only after inspecting any shard failure; no automatic silent retry. Status/progress, worker logs, failure.json and alerts.json expose crashes/stalls. Completed journals are validated by expected IDs/counts/hash before aggregation. Results update a separate ZERO_SHOT_LOGITS block of the master document under runs/final_record_update.lock.
+
+### 2026-11-06T14:35:26.869612+08:00 — launch verified
+- Git commit 9c20776. All four workers reached real main-test inference on GPUs 0–3; 11,704/15,000 distinct main rows completed at this check (each has two rule records). No shard failure. Exact evidence: runs/formal_zero_shot_logits_20261106_v2/launch_verified.json.
+- Automatic panel aggregation and master-record update active in tmux. Active Laya transfer on 4–7 preserved. No additional training is launched. Estimated total inference about 30–50 minutes from this early throughput; full high-K position views dominate, so this is provisional.
