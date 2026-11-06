@@ -62,3 +62,7 @@ Reporter: scripts/formal/report_classification_proper.py --watch. It compares id
 - Two malformed client transport calls were rejected before execution; retried as bounded edits, with no partial experiment writes or GPU runs from those calls.
 - GPU preflight and real optimizer progress will be recorded in launch_verified.json before reporting training as started.
 - No remote backup or push requested.
+
+### 2026-11-06 20:06 +0800 — actual training verified
+
+All three distributed zero-update preflights passed, peak62.885GiB. Actual fresh LoRA/head/pointer/base hashes match the completed CE pilot and all107 frozen source hashes match. Each arm reached optimizer step3/157 with finite loss/gradient; early step times are7.25/7.27/7.44s for scaled/proper/joint-native. No alerts. launch_verified.json holds progress and all preflight proofs. GPU0–1 ASAP continues independently. Estimated remaining training plus full-native Dev/Test roughly20–25min at this early checkpoint; estimate is not a completion guarantee. Reporter remains in persistent tmux and overwrites only its owned master-record section.
