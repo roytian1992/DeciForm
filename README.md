@@ -4,6 +4,10 @@ DeciForm provides structured decision models for **Choice**, **Noul** (Boolean d
 
 The model combines candidate-isolated encoding, shared-input adapters, output-scale parameters, and optional private adaptation conditioned on the explicitly supplied task type. Choice and Noul use log+spherical supervision; Score uses a decimal-prefix readout with CE and ordinal CDF supervision.
 
+![DeciForm overview: candidate-isolated encoding, output-scale and task-private adaptation, with Choice/Noul and Score readouts.](assets/deciform-overview.png)
+
+*DeciForm architecture overview. The additive private-residual formulation shown uses the Qwen configuration; backbone-specific details are described in [Model components](docs/public/model.md).*
+
 ## Installation
 
 Use Python 3.10 or newer and a PyTorch build matching your CUDA installation:

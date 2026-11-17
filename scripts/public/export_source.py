@@ -23,6 +23,7 @@ FILES = [
     "provenance/public_verification.json",
 ]
 DIRECTORIES = [
+    "assets",
     "src/deciform/core",
     "configs/public",
     "examples/public",
