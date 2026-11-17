@@ -1,0 +1,153 @@
+{
+  "version": "r26_20261106_v1",
+  "status": "historical_frozen_manifest_reference",
+  "manifest_sha256": "a6eb4d64e9290f77cece89c9eefa1543b521343828194619f73c5016a98a3f82",
+  "seed": 20261106,
+  "candidate_policy": {
+    "train_choice_negative_count": 3,
+    "train_views": 1,
+    "evaluation": "full_native",
+    "score": "full_support"
+  },
+  "splits": {
+    "train": {
+      "sha256": "e9b210e42ccc8a0e9c62b416fa20f9830e5512e043e39395f9a56bb964740b92",
+      "rows": 200000,
+      "tasks": {
+        "score": 70000,
+        "noul": 60000,
+        "choice": 70000
+      },
+      "sources": {
+        "prometheus": 23109,
+        "helpsteer2": 13865,
+        "helpsteer3": 14000,
+        "qqp": 15000,
+        "helpsteer1": 15406,
+        "paws": 17000,
+        "csqa2": 7000,
+        "boolq": 7000,
+        "sst5": 5392,
+        "stsb": 4878,
+        "asap_set_5": 1083,
+        "asap_set_1": 1070,
+        "asap_set_6": 1080,
+        "asap_set_7": 942,
+        "asap_set_4": 1061,
+        "ag_news": 17500,
+        "cfpb": 17500,
+        "asap_set_2": 1080,
+        "mnli": 17500,
+        "amazon_reviews": 17500,
+        "asap_set_3": 1034
+      },
+      "groups": 163133,
+      "unique_inputs": 197166,
+      "support_sizes": {
+        "5": 77435,
+        "2": 60000,
+        "51": 4878,
+        "11": 1070,
+        "31": 942,
+        "4": 19595,
+        "21": 17500,
+        "6": 1080,
+        "3": 17500
+      },
+      "path": "train_200k.jsonl"
+    },
+    "dev": {
+      "sha256": "0a26af3ac93d33b7899080c3382109c8769562a9f5891f75a2eacfff55b18e0a",
+      "rows": 6000,
+      "tasks": {
+        "choice": 2000,
+        "noul": 2000,
+        "score": 2000
+      },
+      "sources": {
+        "cfpb": 500,
+        "mnli": 500,
+        "ag_news": 500,
+        "amazon_reviews": 500,
+        "qqp": 400,
+        "stsb": 500,
+        "asap_set_5": 100,
+        "asap_set_3": 100,
+        "asap_set_2": 100,
+        "paws": 600,
+        "helpsteer2": 200,
+        "boolq": 300,
+        "asap_set_1": 100,
+        "prometheus": 300,
+        "helpsteer3": 400,
+        "asap_set_6": 100,
+        "helpsteer1": 200,
+        "asap_set_4": 100,
+        "asap_set_7": 100,
+        "csqa2": 300,
+        "sst5": 100
+      },
+      "groups": 5201,
+      "unique_inputs": 5916,
+      "support_sizes": {
+        "21": 500,
+        "3": 500,
+        "4": 700,
+        "5": 1500,
+        "2": 2000,
+        "51": 500,
+        "6": 100,
+        "11": 100,
+        "31": 100
+      },
+      "path": "dev.jsonl"
+    },
+    "test_in_domain": {
+      "sha256": "215066425d23f85f9da9faa705214a72e0d827d6054c2fd79ebe8eb361e0373c",
+      "rows": 15000,
+      "tasks": {
+        "noul": 5000,
+        "choice": 5000,
+        "score": 5000
+      },
+      "sources": {
+        "boolq": 1200,
+        "paws": 1600,
+        "amazon_reviews": 1250,
+        "qqp": 1000,
+        "helpsteer1": 650,
+        "sst5": 650,
+        "cfpb": 1250,
+        "helpsteer3": 500,
+        "mnli": 1250,
+        "prometheus": 650,
+        "ag_news": 1250,
+        "stsb": 1000,
+        "csqa2": 700,
+        "asap_set_4": 200,
+        "asap_set_5": 200,
+        "helpsteer2": 650,
+        "asap_set_2": 200,
+        "asap_set_1": 200,
+        "asap_set_7": 200,
+        "asap_set_6": 200,
+        "asap_set_3": 200
+      },
+      "groups": 12966,
+      "unique_inputs": 14912,
+      "support_sizes": {
+        "2": 5000,
+        "5": 4250,
+        "21": 1250,
+        "3": 1250,
+        "4": 1650,
+        "51": 1000,
+        "6": 200,
+        "11": 200,
+        "31": 200
+      },
+      "path": "test_in_domain.jsonl"
+    }
+  },
+  "reconstruction_status": "Counts and hashes published; exact historical source downloads and membership reconstruction remain separate from the portable custom-data prepare command."
+}

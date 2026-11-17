@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-17",
+  "environment": {
+    "python": "3.10",
+    "torch": "2.11.0+cu128",
+    "transformers": "5.20.2"
+  },
+  "tests": {
+    "status": "passed",
+    "passed": 17,
+    "skipped": 1,
+    "skip_reason": "Duplicate backbone-independent distributed synchronization case omitted for Qwen",
+    "command": "python -m pytest -q tests/public",
+    "clean_source_export": true,
+    "seconds": 26.65
+  },
+  "integration": {
+    "modernbert": {
+      "inventory": {
+        "total": 405174028,
+        "trainable": 404124428,
+        "groups": {
+          "backbone_adapter": 402877952,
+          "output_scale": 57344,
+          "pointer": 528384,
+          "numeric_readout": 660748
+        },
+        "backbone": "modernbert",
+        "adapter_sites": 112,
+        "output_scale_sites": 56,
+        "private_sites": 112
+      },
+      "active_gradient_parameters": 465,
+      "peak_allocated_gib": 7.535056114196777,
+      "roundtrip_exact": true,
+      "kernel_note": "Qwen PyTorch fallback kernels unwrapped for bounded integration check; no throughput claim"
+    },
+    "qwen": {
+      "inventory": {
+        "total": 7968231436,
+        "trainable": 31546892,
+        "groups": {
+          "output_scale": 262144,
+          "backbone_adapter": 26560512,
+          "private": 1179648,
+          "pointer": 2097664,
+          "numeric_readout": 1446924
+        },
+        "backbone": "qwen",
+        "adapter_sites": 128,
+        "output_scale_sites": 64,
+        "private_sites": 16
+      },
+      "active_gradient_parameters": 485,
+      "peak_allocated_gib": 20.374910831451416,
+      "roundtrip_exact": true,
+      "kernel_note": "Qwen PyTorch fallback kernels unwrapped for bounded integration check; no throughput claim"
+    }
+  },
+  "historical_encoding_parity": {
+    "modernbert": {
+      "rows": 9,
+      "tokenization_layout_exact": true,
+      "tasks": {
+        "score": 3,
+        "noul": 3,
+        "choice": 3
+      }
+    },
+    "qwen": {
+      "rows": 9,
+      "tokenization_layout_exact": true,
+      "tasks": {
+        "score": 3,
+        "noul": 3,
+        "choice": 3
+      }
+    }
+  },
+  "historical_schema_validation": {
+    "train_100k": {
+      "rows": 100000,
+      "choice": 35000,
+      "noul": 30000,
+      "score": 35000
+    }
+  },
+  "cli_smoke": {
+    "convert": "passed",
+    "prepare": "passed",
+    "verify": "passed"
+  },
+  "wheel": {
+    "version": "0.2.0",
+    "built": true,
+    "isolated_install_import": true,
+    "upstream_license_included": true
+  },
+  "active_tree_cleanup": {
+    "date": "2026-11-17",
+    "old_modules_removed": true,
+    "default_pytest": {
+      "passed": 17,
+      "skipped": 1,
+      "seconds": 49.18
+    },
+    "current_only_wheel": true,
+    "git_history_rewritten": false
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "epochs": 1,
+  "global_batch": 64,
+  "micro_batch": 1,
+  "seed": 20261101,
+  "schedule": "onecycle",
+  "warmup_fraction": 0.3,
+  "weight_decay": 0.01,
+  "max_grad_norm": 1.0,
+  "save_every": 100
+}

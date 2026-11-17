@@ -1,173 +1,104 @@
 # DeciForm
 
-**Open-weight models for structured decision making.**
+DeciForm provides structured decision models for **Choice**, **Noul** (Boolean decisions), and **Score** (numerical ratings). The public implementation supports **Qwen3.5** and **ModernBERT** through a common data, training, prediction, and evaluation interface.
 
-DeciForm converts a state, a question and explicit candidate definitions into a
-choice with probabilities. This repository contains the standalone supervised
-LoRA trainer, inference interface, evaluation tools and the latest
-**DeciForm-9B-v0.1** adapter and decision-head weights.
+The model combines candidate-isolated encoding, shared-input adapters, output-scale parameters, and optional private adaptation conditioned on the explicitly supplied task type. Choice and Noul use log+spherical supervision; Score uses a decimal-prefix readout with CE and ordinal CDF supervision.
 
-## Released model
+## Installation
 
-| Component | DeciForm-9B-v0.1 |
+Use Python 3.10 or newer and a PyTorch build matching your CUDA installation:
+
+~~~bash
+python -m pip install -e '.[test,data]'
+python -m deciform.core --help
+python -m pytest -q tests/public
+~~~
+
+The verified environment is recorded in [requirements-tested.txt](requirements-tested.txt). Model code is sensitive to Transformers backbone internals; use that pinned environment when reproducing runs. The GPU smoke checks cover PyTorch 2.11.0 and Transformers 5.20.2. Optional accelerated Qwen kernels are not bundled.
+
+## Tasks and inputs
+
+Every request supplies a task type, text, and instructions. Choice supplies candidate descriptions and optional stable identities. Score supplies the complete legal numerical support or a range with an explicit step.
+
+~~~json
+{
+  "id": "example-1",
+  "task": "choice",
+  "state": "The parcel arrived with a broken screen.",
+  "question": {
+    "instructions": "Select the complaint category.",
+    "options": ["Damaged product", "Late delivery", "Billing issue"],
+    "option_ids": ["damage", "delay", "billing"]
+  }
+}
+~~~
+
+Predictions contain candidate identities, aligned probabilities, the selected identity, and its input index. Score additionally returns the expected score; the default decision is the distribution median. Labels are required for training and are excluded from model encodings. See [task examples](examples/public/requests.jsonl) and [data schema](docs/public/data.md).
+
+## Prepare data
+
+The example records are synthetic format examples. Replace them with your own normalized JSONL before training a model.
+
+~~~bash
+python -m deciform.core validate examples/public/train.jsonl --require-label
+python -m deciform.core prepare \
+  --train examples/public/train.jsonl \
+  --output data/example_release --negative-count 3 --views 1
+python -m deciform.core verify data/example_release/manifest.json
+~~~
+
+Pass --dev and --test to preserve held-out splits. Preparation records hashes and counts, rejects exact cross-split input overlap and declared group overlap, and freezes a separate training-candidate file. Evaluation always retains every supplied native candidate. Text is never silently truncated.
+
+--views 2 forms a **Union** of up to two disjoint sets of sampled negatives, with one positive set and one loss per original question. This option affects Choice training only. Noul and Score retain their complete supports.
+
+Raw JSONL, CSV/TSV, and Parquet conversion, pinned Hugging Face downloads, and MIND TSV conversion are documented in [data preparation](docs/public/data.md). Historical 100k/200k population counts and hashes are in [provenance/data](provenance/data); rebuilding those exact populations is distinct from preparing custom input files.
+
+## Train
+
+Choose [Qwen](configs/public/qwen.json) or [ModernBERT](configs/public/modernbert.json). The configuration declares the base model explicitly. Qwen freezes its backbone and trains adaptation/readout modules. ModernBERT jointly trains its backbone and adaptation/readout modules.
+
+~~~bash
+CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --standalone --nproc_per_node=4 \
+  -m deciform.core train \
+  --model-config configs/public/modernbert.json \
+  --train-config configs/public/training.json \
+  --data data/my_release/train.views.jsonl \
+  --output runs/my_deciform
+~~~
+
+For Qwen, change the model configuration to configs/public/qwen.json. A local model directory can replace base_model. Set revision to a specific model revision when downloading from a hub. The supplied training defaults use one epoch and a global batch of 64. Adjust micro_batch to available memory; full-candidate evaluation can require substantially more memory than sampled training.
+
+Fresh training starts from the declared backbone. --resume restores optimizer, scheduler, data position, and per-process RNG state. --initialize-from explicitly starts a new training schedule from an exported DeciForm model. See [training and checkpoints](docs/public/training.md).
+
+## Predict and evaluate
+
+~~~bash
+python -m deciform.core predict \
+  --checkpoint runs/my_deciform/checkpoint \
+  --input data/my_release/test.jsonl \
+  --output runs/my_deciform/test.predictions.jsonl --device cuda
+
+python -m deciform.core evaluate \
+  --data data/my_release/test.jsonl \
+  --predictions runs/my_deciform/test.predictions.jsonl \
+  --output runs/my_deciform/test.metrics.json
+~~~
+
+The evaluator checks record identity, candidate coverage, and probability validity. Metrics are accuracy for single-label Choice/Noul, MAE for Score, and impression-averaged AUC/MRR/nDCG for multi-positive ranking. [Permutation auditing](docs/public/evaluation.md) compares outputs by candidate identity after changing input order.
+
+## Repository guide
+
+| Path | Purpose |
 |---|---|
-| Backbone | Qwen/Qwen3.5-9B, post-trained/instruct variant |
-| Adapter | Standard PEFT LoRA, rank 16, alpha 32, q_proj/v_proj, dropout 0 |
-| Decision head | LayerNorm followed by a scalar linear projection |
-| Trainable parameters | 2,232,321 |
-| Training | BF16 backbone, FP32 head, AdamW, learning rate 2e-5 |
-| Published evaluation | FP32 backbone; saved temperature 1.113263487815857 |
-| Weight package | Approximately 8.94 MB: adapter plus choice head |
+| src/deciform/core/ | Portable public implementation and CLI |
+| configs/public/ | Backbone, optimization, and population definitions |
+| examples/public/ | Synthetic request and raw-source examples |
+| tests/public/ | CPU model, data, objective, and checkpoint tests |
+| docs/public/ | Input contracts, mechanisms, training, evaluation, release status |
+| provenance/ | Component origins and historical data hashes |
 
-The weights are in [checkpoints/DeciForm-9B-v0.1](checkpoints/DeciForm-9B-v0.1).
-Download the frozen backbone separately. Adapter and head tensor files are
-byte-identical to the final evaluated checkpoint. A portable model ID replaces
-the original machine path in adapter_config.json.
+[Architecture](docs/public/model.md) explains backbone-specific adaptation. [Release status](docs/public/release.md) distinguishes implemented public interfaces from remaining reproduction packaging. Superseded interfaces, configurations and v0.1 weights have been removed from the active tree and retained in a local, Git-ignored recovery archive. The public package contains only the current implementation.
 
-Current inference supports **choice** questions, including binary decisions
-represented as two options. Each candidate is scored independently using the
-same prompt and head; probabilities are normalized across candidates.
-The prompt contains candidate definitions, without option-position letters.
-Reordering candidates preserves each candidate's mathematical score;
-floating-point batching differences and exact-tie selection still need care.
+## License and attribution
 
-## Install
-
-The tested environment is in [requirements-tested.txt](requirements-tested.txt).
-Use a CUDA-compatible PyTorch installation. From the repository root:
-
-~~~bash
-conda env create -f environment.yml
-conda activate deciform
-~~~
-
-Or install into an existing compatible environment:
-
-~~~bash
-python -m pip install -e '.[test]'
-pytest -q
-~~~
-
-The original training environment used Python 3.10, PyTorch 2.11.0+cu128,
-Transformers 5.20.2 and PEFT 0.21.2. It also loaded fla-core 0.5.2 through an
-isolated runtime path. That optional runtime is not vendored here. Record the
-kernel configuration when comparing speed or numerical output.
-
-Download **Qwen/Qwen3.5-9B** from ModelScope into a local directory; use its
-post-trained/instruct weights, not Qwen3.5-9B-Base. With the ModelScope SDK:
-
-~~~python
-from modelscope import snapshot_download
-snapshot_download('Qwen/Qwen3.5-9B', local_dir='models/Qwen3.5-9B')
-~~~
-
-Expected config and tokenizer checksums are in
-[base_model.json](checkpoints/DeciForm-9B-v0.1/base_model.json).
-
-## Inference
-
-~~~bash
-CUDA_VISIBLE_DEVICES=0 python scripts/predict.py \
-  --base-model /path/to/Qwen3.5-9B \
-  --checkpoint checkpoints/DeciForm-9B-v0.1 \
-  --input examples/request.jsonl \
-  --output /tmp/deciform-predictions.jsonl
-~~~
-
-Default inference uses FP32, matching reported evaluation. Optional --dtype bf16
-changes numerical precision. Both preserve full text; GPU memory constrains
-usable prompt length.
-
-~~~python
-import json
-from deciform.model import DeciFormModel
-
-model = DeciFormModel.from_pretrained(
-    '/path/to/Qwen3.5-9B', 'checkpoints/DeciForm-9B-v0.1')
-with open('examples/request.jsonl') as f:
-    result = model.predict(json.loads(next(f)))
-print(result['prediction'], result['probabilities'])
-~~~
-
-## LoRA training
-
-Training uses JSONL with labels; inference does not need labels. Training scores
-one positive and up to two deterministic sampled negatives per row. Evaluation
-scores **all** offered candidates.
-
-Prepare a data stage and supply reserved/history records to exclude:
-
-~~~bash
-python scripts/prepare_data.py \
-  --source support=/path/to/new_support_train.jsonl \
-  --exclude-jsonl /path/to/reserved_test.jsonl \
-  --exclude-jsonl /path/to/previously_trained.jsonl \
-  --base-model /path/to/Qwen3.5-9B \
-  --parent checkpoints/DeciForm-9B-v0.1 \
-  --output data/prepared
-
-CUDA_VISIBLE_DEVICES=0,1,2,3 OMP_NUM_THREADS=4 \
-  torchrun --standalone --nproc_per_node=4 scripts/train.py \
-  --config data/prepared/training_config.json \
-  --output-dir runs/my_continuation \
-  --start-from-completed checkpoints/DeciForm-9B-v0.1
-~~~
-
-Defaults: global batch 128, up to four physical rows per GPU, length-aware
-microbatches and gradient checkpointing. A global permutation visits every
-retained row, including the final incomplete batch.
-
-Continuation inherits adapter/head weights and starts a new optimizer and data
-cursor. A run created by this trainer can resume its optimizer, RNG and cursor:
-
-~~~bash
-torchrun --standalone --nproc_per_node=4 scripts/train.py \
-  --config data/prepared/training_config.json \
-  --output-dir runs/my_continuation \
-  --resume runs/my_continuation/checkpoints/step_00000064
-~~~
-
-See [training.md](docs/training.md) for data format and export details.
-
-## Evaluation results
-
-The current Static model and two released baselines evaluated the same 68,156
-local held-out records from 12 sources:
-
-| Model | Source-equal mean accuracy | Record-weighted accuracy |
-|---|---:|---:|
-| DeciForm-9B-v0.1 | 80.56% | 98.27% |
-| Kev-9B | 78.92% | 98.03% |
-| Open-Jev-9B | 71.94% | 93.48% |
-
-See [per-source results](results/README.md) and machine-readable metrics.
-DBpedia14 contributes 66,012 records; source-equal and pooled summaries answer
-different questions. Models have different training histories, and external
-training/test overlap has not been fully audited. This describes a local
-engineering comparison, not an equal-budget method comparison.
-
-Evaluation data is maintained separately. The evaluator accepts a locked
-inventory and passing overlap audit; see [evaluation.md](docs/evaluation.md).
-
-## Project boundary
-
-DeciForm owns all decision-model development: architecture, supervised training,
-LoRA implementations, optimization, inference, calibration and model evaluation.
-JEV_RSI owns recursive strategies, self-edits, reward/budget accounting and
-experiment orchestration. It imports deciform and calls the model training
-primitives here. See [project_boundary.md](docs/project_boundary.md).
-
-New standalone training runs and model comparisons belong to DeciForm/runs.
-Published models belong to checkpoints. Recursive candidate runs remain with
-the calling RSI experiment. This release is a supervised Static model.
-
-## Provenance and license
-
-- [Model card](checkpoints/DeciForm-9B-v0.1/MODEL_CARD.md)
-- [Training stages](provenance/training_stages.json)
-- [Export verification](docs/export_verification.md)
-- [Source migration map](provenance/source_export.json)
-
-Code and project-trained adapter/head: Apache-2.0. The separately obtained Qwen
-backbone has its own Apache-2.0 license. Dataset licenses remain with their
-respective providers; raw training/test data is not bundled.
+Project code uses Apache-2.0. The Kev compatibility utilities retain their upstream Apache-2.0 notice and license; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Pretrained models and datasets retain their respective upstream terms. Raw datasets and backbone weights are not included in the public source export.

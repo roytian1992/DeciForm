@@ -1,0 +1,3 @@
+{"id": "toy-choice", "task": "choice", "state": "The parcel arrived with a broken screen.", "question": {"instructions": "Select the complaint category.", "options": ["Damaged product", "Late delivery", "Billing issue"], "option_ids": ["damage", "delay", "billing"]}, "label": "damage"}
+{"id": "toy-noul", "task": "noul", "state": "Water freezes at zero degrees Celsius under standard atmospheric pressure.", "question": {"instructions": "Is the statement correct?"}, "label": true}
+{"id": "toy-score", "task": "score", "state": "The answer is mostly relevant but omits one required detail.", "question": {"instructions": "Rate completeness from zero to ten."}, "score_range": {"min": 0, "max": 10, "step": 1}, "label": 7.5, "label_kind": "continuous"}

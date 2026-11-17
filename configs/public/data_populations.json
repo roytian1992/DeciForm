@@ -1,0 +1,75 @@
+{
+  "version": "r26_20261106_v1",
+  "seed": 20261106,
+  "training_budgets": [
+    100000,
+    200000
+  ],
+  "tasks_100k": {
+    "choice": 35000,
+    "noul": 30000,
+    "score": 35000
+  },
+  "tasks_200k": {
+    "choice": 70000,
+    "noul": 60000,
+    "score": 70000
+  },
+  "main_choice": [
+    "mnli",
+    "ag_news",
+    "amazon_reviews",
+    "cfpb"
+  ],
+  "main_noul": [
+    "boolq",
+    "paws",
+    "qqp",
+    "csqa2",
+    "helpsteer3"
+  ],
+  "main_score": [
+    "helpsteer1",
+    "helpsteer2",
+    "prometheus",
+    "sst5",
+    "asap_set_1",
+    "asap_set_2",
+    "asap_set_3",
+    "asap_set_4",
+    "asap_set_5",
+    "asap_set_6",
+    "asap_set_7",
+    "stsb"
+  ],
+  "specialists": [
+    "banking77",
+    "asap_set_8",
+    "wmt_en_zh"
+  ],
+  "dev_target": {
+    "choice": 2000,
+    "noul": 2000,
+    "score": 2000
+  },
+  "test_target": {
+    "choice": 5000,
+    "noul": 5000,
+    "score": 5000
+  },
+  "candidate_policy": {
+    "train_choice_negative_count": 3,
+    "train_views": 1,
+    "evaluation": "full_native",
+    "score": "full_support"
+  },
+  "small_score_sources_in_both_budgets": true,
+  "near_duplicate_policy": {
+    "retrieval": "minhash_lsh",
+    "num_perm": 64,
+    "bands": 16,
+    "rows_per_band": 4,
+    "verified_jaccard_threshold": 0.9,
+    "word_shingle_size": 5
+  }
+}

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "deciform"
-version = "0.1.1"
+version = "0.2.0"
 description = "Open-weight models for structured decision making"
 requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
@@ -19,5 +19,11 @@ package-dir = {"" = "src"}
 [tool.setuptools.packages.find]
 where = ["src"]
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["src", "scripts"]
+testpaths = ["tests/public"]
+pythonpath = ["src"]
+
+[project.scripts]
+deciform = "deciform.core.cli:main"
+
+[tool.setuptools.package-data]
+"deciform.core.integrations" = ["LICENSE.kev"]

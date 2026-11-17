@@ -16,5 +16,15 @@ logs/
 *.local.json
 
 # Local immutable migration snapshots may contain historical machine paths.
-legacy/jev_rsi/
+/legacy/
 configs/local/
+
+# Public provenance contains metadata only, not training corpora.
+!provenance/data/
+!provenance/data/*.json
+
+# Local GPU activity guard is retained only for running server services.
+/scripts/research_reset/
+/checkpoints/
+/results/
+/*.launch.log

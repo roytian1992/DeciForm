@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "description": "Extracted portable definitions; original research files unchanged. Public entrypoints replace machine-local orchestration.",
+  "files": [
+    {
+      "source": "scripts/research_reset/shared_adapter.py",
+      "source_sha256": "d572b80699e78b0b1e5587b14c2d1520608e2c583d3a944a52388b0fe2f82ed6",
+      "destination": "src/deciform/core/components/shared_adapter.py",
+      "destination_sha256": "3a9e267ca037d5d384bd0abf82647dde70657de50617e32af8ee94ed4ed55831"
+    },
+    {
+      "source": "scripts/research_reset/adapter_mechanisms.py",
+      "source_sha256": "085b3a357aa9bec246f93657ad18c9bbfd0b0f7ab8a6c0ba1e722e32ebfd1f5b",
+      "destination": "src/deciform/core/components/adapter_mechanisms.py",
+      "destination_sha256": "c35b454225e71b718b5c6f4d4eec229dbd90f1cd19f766238cfcaa93c19d505c"
+    },
+    {
+      "source": "scripts/research_reset/private_residual.py",
+      "source_sha256": "4ed6baef351746301a7eb564da7eae881c0f98da0376e717a93fcf0b7b112975",
+      "destination": "src/deciform/core/components/private_residual.py",
+      "destination_sha256": "ccc29264cba2b4bbd29f3aa0af56440454889e16830fb62547f945bb87074a13"
+    },
+    {
+      "source": "scripts/research_reset/private_residual_independent.py",
+      "source_sha256": "339e00276907540b02c1d6b31ad00873d53589eac6cac034d3d32a2906e075d0",
+      "destination": "src/deciform/core/components/private_residual_independent.py",
+      "destination_sha256": "651ecb269d9ba18ad7e515c6eb2aec844f56e728fed156b2db91ab0fcb91169d"
+    },
+    {
+      "source": "scripts/formal/numeric_trie.py",
+      "source_sha256": "3a6600d882f18877070e1805f821e58d5704bc5072aa4ca69cfcbfd09f17c9ad",
+      "destination": "src/deciform/core/components/numeric_trie.py",
+      "destination_sha256": "fb356e19ec4c13d9f82d4964e3b9d039a1501b3907ddad7e5f7be855ee6f567f"
+    },
+    {
+      "source": "scripts/research_reset/modern_core.py",
+      "source_sha256": "6f9e24f29a6dc07606ed5a9e3108aafea3dba44b72879b6346531b3f2ada3c31",
+      "destination": "src/deciform/core/components/modern_core.py",
+      "destination_sha256": "fc8caa440d00e7864db84847c26e3d505cfc6dedb882a06d4a8947436c89d865"
+    },
+    {
+      "source": "scripts/research_reset/modern_core_shared.py",
+      "source_sha256": "ddef8b698ccb22c8f55174e2a34a18b6aa4b246de741e5f5564c33e72eb39a55",
+      "destination": "src/deciform/core/components/modern_shared.py",
+      "destination_sha256": "e55b569a9514f9a9292408b88cc416c34fd75d73fb47cd0c020e0dedafdf8b53"
+    },
+    {
+      "source": "scripts/research_reset/modern_core_output_scale.py",
+      "source_sha256": "3e3134f699a0c7849001493e35f81bf8eb31d0a65a83d660f3daf8eaa04d950f",
+      "destination": "src/deciform/core/components/modern_scale.py",
+      "destination_sha256": "0e8b7fcc1b309a25b3540149a479de7fa869d1fdd4dae1339b2e63176bb7ceab"
+    },
+    {
+      "source": "scripts/research_reset/modern_shared_private.py",
+      "source_sha256": "d4c01c93325cce0934ffa0a82f51169cfdd194ab92d1c221f48d138d23c018c7",
+      "destination": "src/deciform/core/components/modern_private.py",
+      "destination_sha256": "7765cad3e155299f7ea579e341a56b5e8815427a9794bfc380f413368554800c"
+    },
+    {
+      "source": "runs/kev_ours_v2_20261101_v1/code/vendor/kev/shared_prefix.py",
+      "source_sha256": "bc6dedbad734cca227f3ec6746223b3b03363b0c045aa9f2493d886b1828e71e",
+      "destination": "src/deciform/core/integrations/kev_prefix.py",
+      "destination_sha256": "ec9814786e808b26b6dfb01b39d0e1facbda9372c6805a84a2bf31ae263a8a41"
+    },
+    {
+      "source": "runs/kev_ours_v2_20261101_v1/code/vendor/kev/model.py",
+      "source_sha256": "2ff3b2e67c048e3bc5a0d1a32aafe50804ed315a5564fce06bb4b95697c5271c",
+      "destination": "src/deciform/core/integrations/kev_encoding.py",
+      "destination_sha256": "b56af8bd326bf2ea45fdbd8a85161402e55f3020b7970dbb70ea655033121b3c"
+    }
+  ],
+  "migration_notes": [
+    "Public wrappers replace machine-local imports and orchestration.",
+    "ModernBERT Boolean rendering preserves false/true wording; Qwen preserves no/yes wording.",
+    "Python source formatted for readability; frozen research source unchanged."
+  ],
+  "source_lookup_note": "Historical source paths refer to their original research locations. Superseded files are preserved in the local ignored archive legacy/research_20261117_before_cleanup at the same relative path; public runtime does not import them."
+}

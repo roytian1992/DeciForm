@@ -1,0 +1,12 @@
+{
+  "source": "local_binary",
+  "split": "train",
+  "task": "noul",
+  "text_template": "{text}",
+  "instructions_template": "Is the statement correct?",
+  "label_field": "answer",
+  "label_mapping": {
+    "\"yes\"": true,
+    "\"no\"": false
+  }
+}

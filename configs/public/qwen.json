@@ -1,0 +1,33 @@
+{
+  "seed": 20261101,
+  "bf16": true,
+  "gradient_checkpointing": true,
+  "query_size": 256,
+  "adapter": {
+    "rank": 12,
+    "alpha": 24,
+    "dropout": 0.05
+  },
+  "output_scale": true,
+  "objective": {
+    "classification_alpha": 0.75,
+    "cdf_weight": 0.5,
+    "ordinal_scale": 3.0383850790577127
+  },
+  "lora_plus_ratio": 1,
+  "learning_rates": {
+    "backbone_adapter": 2e-05,
+    "pointer": 2e-05,
+    "private": 2e-05,
+    "numeric_readout": 0.001,
+    "output_scale": 0.001
+  },
+  "backbone": "qwen",
+  "base_model": "Qwen/Qwen3.5-9B-Base",
+  "private": {
+    "enabled": true,
+    "last_layers": 8,
+    "rank": 2,
+    "scale": 2.0
+  }
+}

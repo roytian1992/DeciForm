@@ -1,6 +1,0 @@
-{
-  "progress.json": "1740e6826adfcc88d23c15417fe63e018c182b9edda12caff66f12a2ed37d62f",
-  "choice_head.pt": "2d5be803102127248d346765a4c3f05b675c2f89cf9d037b6670cd88184538b5",
-  "adapter/adapter_model.safetensors": "d5ec8bb177de7cf563dc8d208f721a19b60b08fa25b538cfefdaf506f5e7d009",
-  "adapter/adapter_config.json": "e5f841480950a97be0f4e9c147b72e5a488135aedaab247ff8493ab471b2cb6c"
-}
